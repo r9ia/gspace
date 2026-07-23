@@ -12,14 +12,13 @@ function Header(){
                 gspace.net 
             </Box>
             <Box  sx = {{border:"1px dashed grey" }}>
-                <Button > hello</Button>
-            <Button > hello</Button>
+                <Button > modern</Button>
+            <Button > myspace</Button>
             </Box>
 
             </Grid>
 
             <Grid>
-                 <Button > about</Button>
                   <Button > projects</Button>
                    <Button > photos </Button>
                    <Button > contacts </Button>
