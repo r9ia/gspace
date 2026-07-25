@@ -1,16 +1,11 @@
 import { Box } from "@mui/material"
 
-function Status(){
-    return(
-        <>
-        <div>
-            <Box  sx = {{border:"1px dashed grey" }}>
-                georgia is in your extended network
-            </Box>
-        </div>
-        </>
+function Status() {
+    return (
+        <Box sx={{ color: "green", fontWeight: "bold", textAlign: "left", marginBottom: 2 }}>
+            ● georgia is in your extended network
+        </Box>
     )
-
 }
 
 export default Status

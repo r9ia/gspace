@@ -1,18 +1,12 @@
-import { Button } from "@mui/material"
+import { Button, Stack } from "@mui/material"
 
-function Contact(){
+function Contact() {
 
-    return(
-        <>
-        <div>
-            <Button>
-                send an email
-            </Button>
-            <Button>
-                connect on linkedin
-            </Button>
-        </div>
-        </>
+    return (
+        <Stack spacing={0.5} sx={{ alignItems: "flex-start" }}>
+            <Button>send an email</Button>
+            <Button>connect on linkedin</Button>
+        </Stack>
     )
 
 }

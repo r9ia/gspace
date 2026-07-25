@@ -1,8 +1,0 @@
-//js object that contains all theme colours
-
-export const COLOURS{
-    primaryText: '#142757',
-    secondaryText: '#142757',
-}
-
-export default COLOURS
