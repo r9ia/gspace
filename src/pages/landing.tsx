@@ -1,13 +1,13 @@
 import About from "../page-comps/about.tsx"
 import Music from "../page-comps/music.tsx"
-import ProfileBox from "../page-comps/profile-box.tsx"
+import Status from "../page-comps/status.tsx"
 
 function LandingPage() {
     return (
         <>
-            <ProfileBox title="georgia's Blurbs" variant="orange">
+            <Status/>
+            
                 <About />
-            </ProfileBox>
         
                 <Music />
             
