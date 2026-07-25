@@ -9,10 +9,11 @@ const theme = createTheme({
         background: { default: COLOURS.background },
     },
     typography: {
-        fontFamily: 'system-ui, "Segoe UI", Roboto, sans-serif',
+        fontFamily: 'Verdana, Geneva, sans-serif',
         button: {
             textTransform: 'none',
         },
+        fontSize: 15
         
     },
 })

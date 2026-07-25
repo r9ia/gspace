@@ -6,6 +6,9 @@ function Contact() {
         <Stack spacing={0.5} sx={{ alignItems: "flex-start" }}>
             <Button>send an email</Button>
             <Button>connect on linkedin</Button>
+            <Button>github</Button>
+            <Button>devpost</Button>
+            <Button>devpost</Button>
         </Stack>
     )
 
