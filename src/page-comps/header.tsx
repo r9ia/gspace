@@ -30,7 +30,7 @@ function Header() {
                     <Button sx={GLASS_TAB_SX}>myspace</Button>
                 </Stack>
             </Box>
-            <Box sx={{ bgcolor: COLOURS.navBar, display: "flex", gap: 1, padding: "6px 20px" }}>
+            <Box sx={{ bgcolor: COLOURS.accent, display: "flex", gap: 1, padding: "6px 20px", GLASS_TAB_SX }}>
                 <Button sx={GLASS_TAB_SX} onClick={() => navigate("/")}>home</Button>
                 <Button sx={GLASS_TAB_SX} onClick={() => navigate("/projects")}>projects</Button>
                 <Button sx={GLASS_TAB_SX}>photos</Button>

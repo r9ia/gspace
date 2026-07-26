@@ -1,6 +1,6 @@
 // shared colour + design tokens, mirrors the CSS variables in index.css
 export const COLOURS = {
-    text: '#6b6375',
+    text: '#000000',
     textHeading: '#08060d',
     background: '#ffffff',
     border: '#e5e4e7',

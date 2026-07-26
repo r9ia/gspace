@@ -1,7 +1,6 @@
 import { createTheme } from '@mui/material/styles'
 import { COLOURS } from './colours'
 
-// this is where MUI's defaults (fonts, colours, etc) get overridden for every component
 const theme = createTheme({
     palette: {
         primary: { main: COLOURS.accent },
@@ -13,8 +12,16 @@ const theme = createTheme({
         button: {
             textTransform: 'none',
         },
-        fontSize: 15
-        
+        fontSize: 12,
+    },
+    components: {
+        MuiTypography: {
+            styleOverrides: {
+                root: {
+                    padding: 2,
+                },
+            },
+        },
     },
 })
 
