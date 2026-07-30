@@ -2,9 +2,9 @@ import { Box, Typography } from "@mui/material"
 
 function URL() {
     return (
-        <Box sx={{border:"dashed"}}>
-            <Typography sx={{fontWeight:"bold", fontSize:17}}>website url:</Typography>
-            <Typography sx={{}}>www.hi.ca</Typography>
+        <Box sx={{border:2}}>
+            <Typography sx={{fontWeight:"bold", fontSize:17}}>&nbsp;website url:</Typography>
+            <Typography sx={{}}>&nbsp;&nbsp;&nbsp;www.hi.ca</Typography>
 
         </Box>
         

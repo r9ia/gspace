@@ -1,19 +1,20 @@
 import { Box, Link, Typography } from "@mui/material"
-import COLOURS from "../design/colours"
-import { GLASS_TAB_SX } from "../design/liquid-glass"
+import { getGlassTabSx } from "../design/liquid-glass"
 
 function Contact() {
 
     return (
-        <Box>
-            <Typography sx = {{...GLASS_TAB_SX, borderRadius:0}}>contacting georgia</Typography>
+        <Box sx={{border:2, borderColor:"rgba(107,149,207,0.5)"}}>
+            <Typography sx = {{...getGlassTabSx("107,149,207"), borderRadius:0, fontSize:17}}>&nbsp;contacting georgia</Typography>
 
         
-        <Box sx={{ display: "grid", gridTemplateColumns: "1fr 1fr", alignItems: "flex-start", border:"dashed" }}>
+        <Box sx={{ display: "grid", gridTemplateColumns: "1fr 1fr", alignItems: "flex-start"}}>
             <Typography><Link underline="hover" href="mailto:you@example.com">send an email</Link></Typography>
             <Typography><Link underline="hover" href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer">connect on linkedin</Link></Typography>
             <Typography><Link underline="hover" href="https://github.com/your-username" target="_blank" rel="noopener noreferrer">github</Link></Typography>
             <Typography><Link underline="hover" href="https://devpost.com/your-username" target="_blank" rel="noopener noreferrer">devpost</Link></Typography>
+            <Typography><Link underline="hover" href="https://devpost.com/your-username" target="_blank" rel="noopener noreferrer">phone</Link></Typography>
+            <Typography><Link underline="hover" href="https://devpost.com/your-username" target="_blank" rel="noopener noreferrer">resume</Link></Typography>
         </Box>
         </Box>
     )
