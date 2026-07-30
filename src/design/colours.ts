@@ -14,13 +14,5 @@ export const COLOURS = {
     redLabel: '#cc0000',
 }
 
-// reusable sx presets - spread these into a component's sx prop
-export const SX = {
-    card: {
-        border: '1px dashed grey',
-        borderRadius: 2,
-        padding: 2,
-    },
-}
 
 export default COLOURS

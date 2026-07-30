@@ -18,10 +18,20 @@ const theme = createTheme({
         MuiTypography: {
             styleOverrides: {
                 root: {
+                    textDecorationColor: 'black', 
                     padding: 2,
                 },
             },
         },
+        MuiLink: {
+        styleOverrides: {
+            root: {
+                textDecorationColor: 'black',
+                cursor: "pointer"
+                
+            },
+        },
+    },
     },
 })
 
