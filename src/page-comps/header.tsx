@@ -1,7 +1,7 @@
 import { Button, Box, Stack, Link } from "@mui/material"
 import { useNavigate } from "react-router-dom"
 import COLOURS from "../design/colours"
-import {GLASS_TAB_SX} from "../design/liquid-glass.tsx"
+import {getGlassTabSx} from "../design/liquid-glass.tsx"
 
 const HEADER_FONT = '"Arial Rounded MT Bold", system-ui, sans-serif'
 
@@ -19,7 +19,7 @@ function Header() {
                     <Link sx={{ color: "white"}}>myspace</Link>
                 </Stack>
             </Box>
-            <Box sx={{ ...GLASS_TAB_SX, display: "flex", gap: 1, padding: "6px 20px", borderRadius:0 }}>
+            <Box sx={{ ...getGlassTabSx("107,149,207"), display: "flex", gap: 1, padding: "6px 20px", borderRadius:0 }}>
                 <Link sx={{ color: "white" }} underline="hover" onClick={() => navigate("/")}>home</Link>
                 <p style={{ color: COLOURS.accent }}>|</p>
                 <Link sx={{ color: "white" }} underline="hover" onClick={() => navigate("/projects")}>projects</Link>

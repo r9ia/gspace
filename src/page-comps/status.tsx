@@ -2,7 +2,7 @@ import { Box } from "@mui/material"
 
 function Status() {
     return (
-        <Box sx={{ color: "green", fontWeight: "bold", textAlign: "center",  border:"dashed"}}>
+        <Box sx={{ color: "green", fontWeight: "bold", textAlign: "center",  border:3}}>
             <br></br>
             ● georgia is in your extended network
             <br/>
