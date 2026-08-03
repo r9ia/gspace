@@ -11,27 +11,22 @@ function About() {
                 &nbsp;Georgia's Blurbs
             </Typography>
 
-            <Typography sx={{ fontWeight: "bold", padding: 2, marginBottom: 0 }}>
+            <Typography sx={{ fontWeight: 'bold', px: 2, pt:2 }}>
                 About me:
             </Typography>
-            <Typography sx={{ padding: 2, marginTop: 0, whiteSpace: 'pre-wrap' }}>
-                hi i like volleyball and badminton and detective games 
+            <Typography sx={{ px: 2, whiteSpace: 'pre-wrap' }}>
+                hi i like volleyball and badminton and detective games.
                 learn more about me through 'projects' or through my 'photography'
-                sdfsdfsdfsdffsdfsdfsdfsdfsdddddlorema ipsumdfds
-                sdfsdfsdfsdffsdfsdfsdfsdfsdddddlorema ipsumdfds
-                sdfsdfsdfsdffsdfsdfsdfsdfsdddddlorema ipsumdfds
-                sdfsdfsdfsdffsdfsdfsdfsdfsdddddlorema ipsumdfds
-                sdfsdfsdfsdffsdfsdfsdfsdfsdddddlorema ipsumdfds
-                sdfsdfsdfsdffsdfsdfsdfsdfsdddddlorema ipsumdfds
-                
-                
-                
-                
+                ...
+                <span style={{ color:"pink" }}>
+                    hiii
+                    </span>
             </Typography>
-            <Typography sx={{ fontWeight: "bold", padding: 2, marginBottom: 0 }}>
+
+            <Typography sx={{ fontWeight: 'bold', px: 2, pt: 2 }}>
                 Who'd I like to meet:
             </Typography>
-            <Typography sx={{ padding: 2, marginTop: 0, whiteSpace: 'pre-wrap' }}>
+            <Typography sx={{ px: 2, whiteSpace: 'pre-wrap' }}>
                 everyone!! and speaking of go check out my projects and photography... ^^
             </Typography>
             <br />

@@ -15,7 +15,7 @@ declare global {
 }
 
 //SHAKE IT METRO STATION fire emoji times four
-const VIDEO_ID = 'acU_inBCGO8'; // placeholder — swap for whatever video you want
+const VIDEO_ID = 'acU_inBCGO8'; // url of video after v=
 
 // XP/WMP-style glossy round button
 const XPButton = styled(IconButton)(() => ({
@@ -51,6 +51,76 @@ const XPButton = styled(IconButton)(() => ({
   '&.Mui-disabled': {
     background: 'linear-gradient(180deg, #cfcfcf 0%, #a8a8a8 100%)',
     color: '#e0e0e0',
+  },
+}));
+
+//styling for mui slider
+const XPSlider = styled(Slider)(() => ({
+  height: 10,
+  padding: '8px 0',
+
+  // the background track (unfilled portion) — now a plain solid line
+  '& .MuiSlider-rail': {
+    height: 3,
+    borderRadius: 2,
+    background: 'rgba(107,149,207,0.4)', // solid, matches your glass tab tint
+    opacity: 1,
+  },
+
+  // the filled portion (progress/volume level)
+  '& .MuiSlider-track': {
+    height: 3,
+    borderRadius: 2,
+    border: 'none',
+    background: 'linear-gradient(180deg, #8fd3f9 0%, #3f9fe0 45%, #0d6fc7 100%)',
+  },
+
+  // the draggable knob — now a small oval instead of a round dot
+  '& .MuiSlider-thumb': {
+    width: 14,
+    height: 9,
+    borderRadius: '50% / 40%', // oval: wider radius horizontally, flatter vertically
+    background: 'linear-gradient(180deg, #8fd3f9 0%, #3f9fe0 45%, #0d6fc7 100%)',
+    border: '1px solid #0a4f8f',
+    boxShadow: `
+      0 1px 2px rgba(0,0,0,0.4),
+      inset 0 1px 1px rgba(255,255,255,0.6),
+      inset 0 -1px 2px rgba(0,0,0,0.15)
+    `,
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      top: 1,
+      left: '15%',
+      width: '70%',
+      height: '35%',
+      background: 'linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0))',
+      borderRadius: '50%',
+    },
+    '&:hover, &.Mui-focusVisible': {
+      boxShadow: `
+        0 0 0 6px rgba(63,159,224,0.16),
+        0 1px 2px rgba(0,0,0,0.4),
+        inset 0 1px 1px rgba(255,255,255,0.6),
+        inset 0 -1px 2px rgba(0,0,0,0.15)
+      `,
+    },
+    '&.Mui-active': {
+      boxShadow: `inset 0 2px 4px rgba(0,0,0,0.5)`,
+    },
+  },
+
+  '&.Mui-disabled': {
+    '& .MuiSlider-rail': {
+      background: 'rgba(150,150,150,0.3)',
+    },
+    '& .MuiSlider-track': {
+      background: 'linear-gradient(180deg, #cfcfcf 0%, #a8a8a8 100%)',
+    },
+    '& .MuiSlider-thumb': {
+      background: 'linear-gradient(180deg, #cfcfcf 0%, #a8a8a8 100%)',
+      border: '1px solid #888',
+    },
   },
 }));
 
@@ -156,16 +226,16 @@ export default function Music() {
   }
 
   return (
-    <Box sx={{ ...getGlassTabSx("107,149,207"), borderRadius: 1, padding: 2 }}>
+    <Box sx={{ ...getGlassTabSx("107,149,207"), borderRadius: 1, padding: 2, color: 'black' }}>
       {/* Song title + small visible YouTube player side by side */}
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
         <div ref={containerRef} style={{ width: 60, height: 34, flexShrink: 0 }} />
         <Box>Shake It - Metro Station</Box>
       </Box>
 
-      {/* progress bar + time */}
-      <Box sx={{ px: 1 }}>
-        <Slider
+      {/* progress bar + time, same line */}
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, px: 1 }}>
+        <XPSlider
           value={currentTime}
           min={0}
           max={duration || 0}
@@ -173,27 +243,39 @@ export default function Music() {
           onChangeCommitted={handleSeekCommitted}
           disabled={!isReady}
           size="small"
+          sx={{ flex: 1 }}
         />
 
-        <Box sx={{ display: 'flex', fontSize: 12 }}>
+        {/* time */}
+        <Box sx={{ display: 'flex', fontSize: 12, flexShrink: 0, whiteSpace: 'nowrap' }}>
           <span>{formatTime(currentTime)}</span>
           <span>&nbsp;/&nbsp;</span>
           <span>{formatTime(duration)}</span>
         </Box>
       </Box>
 
-      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+
+      {/* play button + volume*/}
+      <Box sx={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        gap: 1,
+        px: 1
+      }}>
+
+        {/* play button*/}
         <XPButton onClick={handlePlayPause} disabled={!isReady}>
           {isPlaying ? <PauseIcon /> : <PlayArrowIcon />}
         </XPButton>
 
         {/* Volume control: icon + always-visible horizontal slider */}
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flex: 1 }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, pr: 1 }}>
           <XPButton disabled={!isReady} sx={{ width: 28, height: 28 }}>
             {volume === 0 ? <VolumeOffIcon sx={{ fontSize: 16 }} /> : <VolumeUpIcon sx={{ fontSize: 16 }} />}
           </XPButton>
 
-          <Slider
+          <XPSlider
             value={volume}
             min={0}
             max={100}
@@ -202,13 +284,16 @@ export default function Music() {
             sx={{ width: 80 }}
           />
         </Box>
+
+
       </Box>
     </Box>
   );
 }
 
 function formatTime(seconds: number) {
-  if (!isFinite(seconds) || seconds < 0) return '0:00';
+  if (!isFinite(seconds) || seconds < 0)
+    return '0:00';
   const mins = Math.floor(seconds / 60);
   const secs = Math.floor(seconds % 60);
   return `${mins}:${secs.toString().padStart(2, '0')}`;
