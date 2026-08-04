@@ -1,11 +1,11 @@
 import Projects from "../page-comps/projects.tsx"
 
 
-function ProjectsPage() {
+function ProjectsOverview() {
     return (
             <Projects />
        
     )
 }
 
-export default ProjectsPage
+export default ProjectsOverview
