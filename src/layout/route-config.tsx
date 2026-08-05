@@ -10,11 +10,11 @@ function RouteConfig() {
     return useRoutes([
         // every page except the not found page has the default layout
         {
-            element: <DefaultLayout />, 
+            element: <DefaultLayout />,
             children: [
                 { path: "/", element: <LandingPage /> },
                 { path: "/projects", element: <ProjectsOverview /> },
-                { path: "/projects/:projectTitle", element: <ProjectPage/>}
+                { path: "/projects/:projectTitle", element: <ProjectPage /> }
             ],
         },
         // not found page

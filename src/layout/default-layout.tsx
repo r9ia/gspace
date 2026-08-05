@@ -24,7 +24,7 @@ function DefaultLayout() {
             <Box sx={{ display: "flex", gap: 3, alignItems: "flex-start", padding: "20px", textAlign: "left" }}>
                 <Sidebar />
                 <Box
-                    sx={{ flex: 1, minWidth: 0, opacity: visible ? 1 : 0, transition: "opacity 400ms ease-in-out" }}
+                    sx={{ flex: 1, minWidth: 0, opacity: visible ? 1 : 0, transition: "opacity 200ms ease-in-out" }}
                     onTransitionEnd={() => {
                         if (!visible) {
                             setDisplayLocation(location)
