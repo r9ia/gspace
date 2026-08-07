@@ -1,6 +1,6 @@
 import { useParams, Navigate, Link as RouterLink } from "react-router-dom"
 import { Box, Typography, Stack } from "@mui/material"
-import { getProjectByTitle } from "../projectInfo/projectInfo.tsx"
+import { getProjectByTitle } from "../Info/projectInfo.tsx"
 import { Link } from "@mui/material"
 
 const HEADER_FONT = '"Arial Rounded MT Bold", system-ui, sans-serif'
@@ -22,16 +22,21 @@ function ProjectPage() {
     return (
         <Box key={currentProject.title}>
             <RouterLink to="/projects">
-                return to projects
+                <Typography>
+                    return to projects
+                </Typography>
+
             </RouterLink>
 
             {/*cover image */}
             {currentProject.cover && (
-                <img
-                    src={currentProject.cover}
-                    alt={currentProject.title}
-                    style={{ width: "100%", maxHeight: 320, objectFit: "cover", borderRadius: 8 }}
-                />
+                <Box component="img" src={currentProject.cover} alt={currentProject.title} sx={{
+                    height: 233,
+                    width: 350,
+                    maxHeight: { xs: 233, md: 167 },
+                    maxWidth: { xs: 350, md: 250 },
+                }} />
+
             )}
 
             {/*title*/}

@@ -4,6 +4,7 @@ import LandingPage from "../pages/landing.tsx"
 import ProjectsOverview from "../pages/projects-overview.tsx"
 import NotFound from "../pages/notfound.tsx"
 import ProjectPage from "../pages/projects-page.tsx"
+import Experience from "../pages/experience.tsx"
 
 // defining all the routes in the site
 function RouteConfig() {
@@ -14,7 +15,8 @@ function RouteConfig() {
             children: [
                 { path: "/", element: <LandingPage /> },
                 { path: "/projects", element: <ProjectsOverview /> },
-                { path: "/projects/:projectTitle", element: <ProjectPage /> }
+                { path: "/projects/:projectTitle", element: <ProjectPage /> },
+                { path: "/experience", element: <Experience /> }
             ],
         },
         // not found page

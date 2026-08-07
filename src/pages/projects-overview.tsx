@@ -1,15 +1,176 @@
-import { Box, Stack, Typography } from "@mui/material"
+import { useState } from "react"
+import { Box, Stack, Typography, styled } from "@mui/material"
 import { Link as RouterLink } from "react-router-dom"
-import { PROJECTS } from "../projectInfo/projectInfo"
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft"
+import ChevronRightIcon from "@mui/icons-material/ChevronRight"
+import { PROJECTS } from "../Info/projectInfo"
+import { getGlassTabSx } from "../design/liquid-glass"
+
+// Pill-style glass button for direct project access
+const GlassPillButton = styled(Box)<{ active?: boolean }>(({ active }) => ({
+    padding: "6px 14px",
+    borderRadius: 999,
+    fontSize: 13,
+    cursor: "pointer",
+    whiteSpace: "nowrap",
+    userSelect: "none",
+    color: active ? "white" : "#1a4f8f",
+    background: active
+        ? "linear-gradient(180deg, #8fd3f9 0%, #3f9fe0 45%, #0d6fc7 100%)"
+        : "rgba(255,255,255,0.5)",
+    border: active ? "1px solid #0a4f8f" : "1px solid rgba(107,149,207,0.4)",
+    boxShadow: active
+        ? "inset 0 1px 1px rgba(255,255,255,0.5), 0 1px 2px rgba(0,0,0,0.2)"
+        : "none",
+    transition: "all 0.2s ease",
+    "&:hover": {
+        background: active
+            ? "linear-gradient(180deg, #a3ddfb 0%, #52aeeb 45%, #1a7fd6 100%)"
+            : "rgba(255,255,255,0.8)",
+    },
+}))
+
+// The full center card
+const CoverflowCurrent = styled(Box)(() => ({
+    position: "absolute",
+    top: 0,
+    left: "9%",
+    width: "82%",
+    transition: "all 0.4s cubic-bezier(0.22, 1, 0.36, 1)",
+    zIndex: 5,
+}))
+
+// Thinner glassy edge with a chevron centered inside — doubles as the nav button
+const CoverflowEdge = styled(Box)<{ side: "left" | "right" }>(({ side }) => ({
+    position: "absolute",
+    top: 8,
+    bottom: 8,
+    width: "11%",
+    [side]: "2%",
+    borderRadius: 8,
+    cursor: "pointer",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    background: "linear-gradient(180deg, rgba(255,255,255,0.45), rgba(107,149,207,0.35))",
+    border: "1px solid rgba(255,255,255,0.5)",
+    boxShadow: "inset 0 1px 2px rgba(255,255,255,0.6), 0 2px 8px rgba(0,0,0,0.15)",
+    opacity: 0.55,
+    transform: side === "left"
+        ? "perspective(800px) rotateY(35deg) scale(0.9)"
+        : "perspective(800px) rotateY(-35deg) scale(0.9)",
+    transition: "all 0.4s cubic-bezier(0.22, 1, 0.36, 1)",
+    zIndex: 2,
+    "&:hover": {
+        opacity: 0.85,
+    },
+    "& svg": {
+        fontSize: 28,
+        color: "#0d6fc7",
+        filter: "drop-shadow(0 1px 1px rgba(255,255,255,0.6))",
+    },
+}))
+
+function ProjectCard({ project }: { project: (typeof PROJECTS)[number] }) {
+    return (
+        <Box sx={{
+            ...getGlassTabSx("196, 215, 255"),
+            color: "black",
+            padding: 3,
+            display: "flex",
+            bgcolor: "rgba(196, 215, 255)",
+            borderRadius: 2,
+            height: { xs: "auto", sm: 220 }, // fixed height — card stays the same size regardless of content
+            // extra glassy sheen layer
+            position: "relative",
+            overflow: "hidden",
+            "&::after": {
+                content: '""',
+                position: "absolute",
+                top: 0,
+                left: 0,
+                right: 0,
+                height: "40%",
+                background: "linear-gradient(180deg, rgba(255,255,255,0.5), rgba(255,255,255,0))",
+                pointerEvents: "none",
+            },
+        }}>
+            {/*cover image*/}
+            <img
+                src={project.cover}
+                width={180}
+                height={180}
+                style={{ position: "relative", zIndex: 1, flexShrink: 0 }}
+            />
+
+            {/*text and stuff*/}
+            <Box
+                sx={{
+                    position: "relative",
+                    zIndex: 1,
+                    display: "flex",
+                    flexDirection: "column",
+                    flex: 1,
+                    minWidth: 0, // lets text truncate/wrap instead of overflowing the fixed-height card
+                    ml: 2,
+                }}
+            >
+                <Typography>
+                    {project.date}
+                </Typography>
+                <h3 style={{ margin: "0 0 4px" }}>{project.title}</h3>
+                <Typography>
+                    tags: {project.tags}
+                </Typography>
+
+                {project.description && (
+                    <Typography style={{ margin: "0 0 4px" }}>
+                        {project.description.length > 150
+                            ? `${project.description.slice(0, 150)}...`
+                            : project.description}
+                    </Typography>
+                )}
+
+                {/*link to the individual project page which has the url:
+                /projects/*insert name of the project*/}
+                <RouterLink
+                    to={`/projects/${project.title}`}
+                    rel="noreferrer"
+                    style={{ marginTop: "auto" }}
+                >
+                    <Typography>
+                        {'>>>'} Continue Reading
+                    </Typography>
+                </RouterLink>
+            </Box>
+        </Box>
+    )
+}
 
 function ProjectOverview() {
+    const [index, setIndex] = useState(0)
+
+    function goTo(newIndex: number) {
+        setIndex((newIndex + PROJECTS.length) % PROJECTS.length)
+    }
+
+    function goNext() {
+        goTo(index + 1)
+    }
+
+    function goPrev() {
+        goTo(index - 1)
+    }
+
+    const currentProject = PROJECTS[index]
+
     return (
         <>
             <Typography sx={{
                 borderRadius: 0,
-                fontSize: 23, color: "#000000", fontWeight: "bold",
+                fontSize: 25, color: "#000000", fontWeight: "bold",
             }}>
-                Project Blog
+                Project Gallery
             </Typography>
 
             <Typography>
@@ -18,35 +179,48 @@ function ProjectOverview() {
 
             <br />
 
-            <Stack sx={{}} spacing={2}>
-                {PROJECTS.map((project) => (
-                    //containing one project tab
-                    <Box key={project.title} sx={{ padding: 2, bgcolor: "orange", display: "flex" }}>
-                        {/*cover image*/}
-                        <img src={project.cover} width={130} height={130} />
+            {/* Coverflow gallery: thin tilted glassy edges (with built-in nav arrows) peeking around center card */}
+            <Box
+                sx={{
+                    position: "relative",
+                    height: 280,
+                    perspective: "1200px",
+                    overflow: "hidden",
+                }}
+            >
+                {PROJECTS.length > 1 && (
+                    <CoverflowEdge side="left" onClick={goPrev}>
+                        <ChevronLeftIcon />
+                    </CoverflowEdge>
+                )}
 
-                        {/*text and stuff*/}
+                <CoverflowCurrent key={currentProject.title}>
+                    <ProjectCard project={currentProject} />
+                </CoverflowCurrent>
 
-                        <Box>
-                            <Typography>
-                                {project.date}
-                            </Typography>
-                            <h3 style={{ margin: "0 0 4px" }}>{project.title}</h3>
-                            <Typography>
-                                tags: {project.tags}
-                            </Typography>
+                {PROJECTS.length > 1 && (
+                    <CoverflowEdge side="right" onClick={goNext}>
+                        <ChevronRightIcon />
+                    </CoverflowEdge>
+                )}
+            </Box>
 
+            <br/>
 
-                            {project.description && <p style={{ margin: "0 0 4px" }}>{project.description}</p>}
-
-                            {/*link to the individual project page which has the url:
-                            /projects/*insert name of the project*/}
-                            <RouterLink to={`/projects/${project.title}`} rel="noreferrer">
-                                {'>>>'} Continue Reading</RouterLink>
-
-                        </Box>
-
-                    </Box>
+            {/* direct-access project button row */}
+            <Stack
+                direction="row"
+                spacing={1}
+                sx={{ width: "100%", justifyContent: "center", flexWrap: "wrap", pb: 1, mb: 2 }}
+            >
+                {PROJECTS.map((p, i) => (
+                    <GlassPillButton
+                        key={p.title}
+                        active={i === index}
+                        onClick={() => goTo(i)}
+                    >
+                        {p.title}
+                    </GlassPillButton>
                 ))}
             </Stack>
         </>
