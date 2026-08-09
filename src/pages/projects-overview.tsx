@@ -6,6 +6,12 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight"
 import { PROJECTS } from "../Info/projectInfo"
 import { getGlassTabSx } from "../design/liquid-glass"
 
+//constant heights
+const CARD_HEIGHT = { xs: 300, sm: 280 }
+const IMAGE_SIZE = { xs: 120, sm: 150 } // fits within CARD_HEIGHT minus padding
+
+
+
 // Pill-style glass button for direct project access
 const GlassPillButton = styled(Box)<{ active?: boolean }>(({ active }) => ({
     padding: "6px 14px",
@@ -80,8 +86,7 @@ function ProjectCard({ project }: { project: (typeof PROJECTS)[number] }) {
             display: "flex",
             bgcolor: "rgba(196, 215, 255)",
             borderRadius: 2,
-            height: { xs: "auto", sm: 220 }, // fixed height — card stays the same size regardless of content
-            // extra glassy sheen layer
+            height: CARD_HEIGHT,
             position: "relative",
             overflow: "hidden",
             "&::after": {
@@ -96,11 +101,18 @@ function ProjectCard({ project }: { project: (typeof PROJECTS)[number] }) {
             },
         }}>
             {/*cover image*/}
-            <img
+            <Box
+                component="img"
                 src={project.cover}
-                width={180}
-                height={180}
-                style={{ position: "relative", zIndex: 1, flexShrink: 0 }}
+                sx={{
+                    position: "relative",
+                    zIndex: 1,
+                    flexShrink: 0,
+                    width: IMAGE_SIZE,
+                    height: IMAGE_SIZE,
+                    objectFit: "cover",
+                    borderRadius: 1,
+                }}
             />
 
             {/*text and stuff*/}
@@ -111,32 +123,52 @@ function ProjectCard({ project }: { project: (typeof PROJECTS)[number] }) {
                     display: "flex",
                     flexDirection: "column",
                     flex: 1,
-                    minWidth: 0, // lets text truncate/wrap instead of overflowing the fixed-height card
+                    minWidth: 0,
+                    minHeight: 0, // <- lets this column actually shrink instead of overflowing its flex parent
+                    overflow: "hidden",
                     ml: 2,
                 }}
             >
                 <Typography>
                     {project.date}
                 </Typography>
-                <h3 style={{ margin: "0 0 4px" }}>{project.title}</h3>
+
+                <Typography
+                    component="h3"
+                    sx={{
+                        margin: "0 0 4px",
+                        fontWeight: "bold",
+                        display: "-webkit-box",
+                        WebkitLineClamp: 1,
+                        WebkitBoxOrient: "vertical",
+                        overflow: "hidden",
+                    }}
+                >
+                    {project.title}
+                </Typography>
+
                 <Typography>
                     tags: {project.tags}
                 </Typography>
 
                 {project.description && (
-                    <Typography style={{ margin: "0 0 4px" }}>
-                        {project.description.length > 150
-                            ? `${project.description.slice(0, 150)}...`
-                            : project.description}
+                    <Typography
+                        sx={{
+                            margin: "0 0 4px",
+                            display: "-webkit-box",
+                            WebkitLineClamp: { xs: 3, sm: 4 },
+                            WebkitBoxOrient: "vertical",
+                            overflow: "hidden",
+                        }}
+                    >
+                        {project.description}
                     </Typography>
                 )}
 
-                {/*link to the individual project page which has the url:
-                /projects/*insert name of the project*/}
                 <RouterLink
                     to={`/projects/${project.title}`}
                     rel="noreferrer"
-                    style={{ marginTop: "auto" }}
+                    style={{ marginTop: "auto", flexShrink: 0 }}
                 >
                     <Typography>
                         {'>>>'} Continue Reading
@@ -183,7 +215,7 @@ function ProjectOverview() {
             <Box
                 sx={{
                     position: "relative",
-                    height: 280,
+                    height: CARD_HEIGHT,   // matches ProjectCard's height
                     perspective: "1200px",
                     overflow: "hidden",
                 }}
@@ -205,7 +237,7 @@ function ProjectOverview() {
                 )}
             </Box>
 
-            <br/>
+            <br />
 
             {/* direct-access project button row */}
             <Stack

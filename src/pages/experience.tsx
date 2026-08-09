@@ -1,5 +1,4 @@
-import { Box, Stack, Typography } from "@mui/material"
-import { Link as RouterLink } from "react-router-dom"
+import { Box, Chip, Stack, Typography } from "@mui/material"
 import { EXPERIENCES } from "../Info/experienceInfo"
 import { getGlassTabSx } from "../design/liquid-glass"
 
@@ -16,40 +15,43 @@ function Experience() {
             <br />
 
             <Stack sx={{}} spacing={2}>
-                {EXPERIENCES.map((project) => (
-                    //containing one project tab
-                    <Box key={project.title} sx={{
+                {EXPERIENCES.map((experience) => (
+                    //containing one experience tab
+                    <Box key={experience.title} sx={{
                         // ...getGlassTabSx("252, 119, 10"),
-                        padding: 2, display: "flex", bgcolor:"rgba(196, 215, 255)", 
+                        padding: 2, display: "flex", bgcolor: "rgba(196, 215, 255)",
                         //boxShadow: 7//'0px 10px 20px rgba(193, 83, 15, 0.3)'
                     }}>
                         {/*cover image*/}
-                        <img src={project.cover} width={130} height={130} />
+                        <img src={experience.cover} width={130} height={130} />
 
-                        {/*text and stuff*/}
-
+                        {/*text*/}
                         <Box>
                             <Typography>
-                                {project.date}
+                                {experience.date}
                             </Typography>
-                            <h3 style={{ margin: "0 0 4px" }}>{project.title}</h3>
+                            <Typography sx={{
+                                margin: "0 0 4px", fontSize: 20, color: "#000000",
+                                fontWeight: "bold",
+                            }}>{experience.title}</Typography>
+
+                            {/*stack tags*/}
+                            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, margin: 1 }}>
+                                {experience.stack.map((tech) => (
+                                    <Chip key={tech} label={tech}
+                                        sx={{
+                                            ...getGlassTabSx("246, 206, 157"),
+                                            color: "#c87d45", fontWeight: "bold"
+                                        }} />
+                                ))}
+                            </Box>
 
 
-                            {project.description && (
-                                <Typography style={{ margin: "0 0 4px" }}>
-                                    {project.description.length > 150
-                                        ? `${project.description.slice(0, 150)}...`
-                                        : project.description}
+                            {experience.description && (
+                                <Typography sx={{}}>
+                                    {experience.description}
                                 </Typography>
                             )}
-
-                            {/*link to the individual project page which has the url:
-                            /projects/*insert name of the project*/}
-                            <RouterLink to={`/projects/${project.title}`} rel="noreferrer">
-                                <Typography>
-                                    {'>>>'} Continue Reading
-                                </Typography>
-                            </RouterLink>
 
                         </Box>
 
