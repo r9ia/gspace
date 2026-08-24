@@ -7,7 +7,7 @@ import { PROJECTS } from "../Info/projectInfo"
 import { getGlassTabSx } from "../design/liquid-glass"
 
 //constant heights
-const CARD_HEIGHT = { xs: 300, sm: 280 }
+const CARD_HEIGHT = 400 
 const IMAGE_SIZE = { xs: 120, sm: 150 } // fits within CARD_HEIGHT minus padding
 
 
@@ -84,6 +84,7 @@ function ProjectCard({ project }: { project: (typeof PROJECTS)[number] }) {
             color: "black",
             padding: 3,
             display: "flex",
+            flexDirection: "column",   // image stacks above text now
             bgcolor: "rgba(196, 215, 255)",
             borderRadius: 2,
             height: CARD_HEIGHT,
@@ -108,6 +109,7 @@ function ProjectCard({ project }: { project: (typeof PROJECTS)[number] }) {
                     position: "relative",
                     zIndex: 1,
                     flexShrink: 0,
+                    alignSelf: "center",   // keeps image centered horizontally instead of stretching full width
                     width: IMAGE_SIZE,
                     height: IMAGE_SIZE,
                     objectFit: "cover",
@@ -124,9 +126,9 @@ function ProjectCard({ project }: { project: (typeof PROJECTS)[number] }) {
                     flexDirection: "column",
                     flex: 1,
                     minWidth: 0,
-                    minHeight: 0, // <- lets this column actually shrink instead of overflowing its flex parent
+                    minHeight: 0,
                     overflow: "hidden",
-                    ml: 2,
+                    mt: 2,   // ← was ml: 2, now spacing goes above instead of to the left
                 }}
             >
                 <Typography>
@@ -147,7 +149,14 @@ function ProjectCard({ project }: { project: (typeof PROJECTS)[number] }) {
                     {project.title}
                 </Typography>
 
-                <Typography>
+                <Typography
+                    sx={{
+                        display: "-webkit-box",
+                        WebkitLineClamp: 1,
+                        WebkitBoxOrient: "vertical",
+                        overflow: "hidden",
+                    }}
+                >
                     tags: {project.tags}
                 </Typography>
 
@@ -156,7 +165,7 @@ function ProjectCard({ project }: { project: (typeof PROJECTS)[number] }) {
                         sx={{
                             margin: "0 0 4px",
                             display: "-webkit-box",
-                            WebkitLineClamp: { xs: 3, sm: 4 },
+                            WebkitLineClamp: { xs: 2, sm: 2 },  // ← shrunk since vertical space is now tighter
                             WebkitBoxOrient: "vertical",
                             overflow: "hidden",
                         }}
@@ -203,10 +212,6 @@ function ProjectOverview() {
                 fontSize: 25, color: "#000000", fontWeight: "bold",
             }}>
                 Project Gallery
-            </Typography>
-
-            <Typography>
-                [subscribe to this blog]
             </Typography>
 
             <br />
