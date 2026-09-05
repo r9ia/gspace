@@ -65,7 +65,7 @@ function Experience() {
                         {/* actual content*/}
                         <Box sx={{ display: "flex", pt: 1 }}>
                             {/*post icon*/}
-                            <img src={experience.cover} width={40} height={40} />
+                            <img src={"experiences.png"} width={40} height={40} />
 
 
                             {/*text*/}
@@ -102,7 +102,7 @@ function Experience() {
 
 
                                 {experience.description && (
-                                    <Typography sx={{}}>
+                                    <Typography sx={{pt:1.5}}>
                                         {experience.description}
                                     </Typography>
                                 )}
