@@ -16,7 +16,7 @@ function PictureTitle() {
                 <Typography>Toronto, ON, CA</Typography>
                 <Typography>University of Toronto ECE</Typography>
                 <br />
-                <Typography>Last Login: July 26/26</Typography>
+                <Typography>Last Login: Sept 1/26</Typography>
 
             </Box>
         </Box>

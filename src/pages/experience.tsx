@@ -1,7 +1,6 @@
-import { Box, Chip, Divider, Stack, Typography } from "@mui/material"
+import { Box, Divider, Stack, Typography } from "@mui/material"
 import { EXPERIENCES } from "../Info/experienceInfo"
 import { getGlassTabSx } from "../design/liquid-glass"
-import { red } from "@mui/material/colors"
 
 function Experience() {
     return (
@@ -111,7 +110,7 @@ function Experience() {
 
                             {/*cover image*/}
                             <Box sx={{ml: "auto"}}>
-                                <img src={experience.cover} width={130} height={130} />
+                                <img src={experience.cover} width={130} />
                             </Box>
                             
                         </Box>
