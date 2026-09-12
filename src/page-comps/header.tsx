@@ -32,7 +32,7 @@ function Header() {
                 <Box component="span" sx={{ color: COLOURS.accent }}>|</Box>
                 <Link sx={{ color: "white", fontSize: 18 }} underline="hover" onClick={() => navigate("/projects")}>projects</Link>
                 <Box component="span" sx={{ color: COLOURS.accent }}>|</Box>
-                <Link sx={{ color: "white", fontSize: 18 }} underline="hover">photos</Link>
+                <Link sx={{ color: "white", fontSize: 18 }} underline="hover" onClick={() => navigate("/gallery")}>gallery</Link>
             </Box>
         </>
     )

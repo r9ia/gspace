@@ -5,6 +5,7 @@ import ProjectsOverview from "../pages/projects-overview.tsx"
 import NotFound from "../pages/notfound.tsx"
 import ProjectPage from "../pages/projects-page.tsx"
 import Experience from "../pages/experience.tsx"
+import Gallery from "../pages/gallery.tsx"
 
 // defining all the routes in the site
 function RouteConfig() {
@@ -16,7 +17,8 @@ function RouteConfig() {
                 { path: "/", element: <LandingPage /> },
                 { path: "/projects", element: <ProjectsOverview /> },
                 { path: "/projects/:projectTitle", element: <ProjectPage /> },
-                { path: "/experience", element: <Experience /> }
+                { path: "/experience", element: <Experience /> },
+                { path: "/gallery", element: <Gallery /> }
             ],
         },
         // not found page

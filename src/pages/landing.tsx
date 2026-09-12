@@ -6,7 +6,7 @@ function LandingPage() {
     return (
         <>
             <Stack spacing={3}>
-                <Status />
+                
                 <About />
             </Stack>
 

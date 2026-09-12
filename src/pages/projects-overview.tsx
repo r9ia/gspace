@@ -360,7 +360,7 @@ function ProjectOverview() {
             <Stack direction="row" sx={{ justifyContent: "space-between", alignItems: "baseline", mb: 1 }}>
                 <Typography
                     sx={{
-                        fontSize: { xs: 22, sm: 26 },
+                        fontSize: { xs: 16, sm: 20 },
                         color: "#08060d",
                         fontWeight: "bold",
                         letterSpacing: "-0.02em",

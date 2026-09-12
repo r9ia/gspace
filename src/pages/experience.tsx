@@ -13,7 +13,7 @@ function Experience() {
                     bgcolor: "#cfdaf0"
                 }}>
                     <Typography sx={{
-                        fontSize: 22,
+                        fontSize: 20,
                         color: "#000000",
                         fontWeight: 550
                     }}>

@@ -15,7 +15,7 @@ declare global {
 }
 
 //SHAKE IT METRO STATION fire emoji times four
-const VIDEO_ID = 'acU_inBCGO8'; // url of video after v=
+const VIDEO_ID = 'f2mvXaqpUxY'; // url of video after v=
 
 // XP/WMP-style glossy round button
 const XPButton = styled(IconButton)(() => ({
@@ -59,7 +59,7 @@ const XPSlider = styled(Slider)(() => ({
   height: 10,
   padding: '8px 0',
 
-  // the background track (unfilled portion) — now a plain solid line
+  // background track
   '& .MuiSlider-rail': {
     height: 3,
     borderRadius: 2,
@@ -163,8 +163,8 @@ export default function Music() {
 
     playerRef.current = new window.YT.Player(containerRef.current, {
       videoId: VIDEO_ID,
-      width: '60',
-      height: '34',
+      width: '200',
+      height: '200',
       playerVars: {
         controls: 0,
         disablekb: 1,
@@ -229,7 +229,7 @@ export default function Music() {
     <Box sx={{ ...getGlassTabSx("107,149,207"), borderRadius: 1, padding: 2, color: 'black' }}>
       {/* Song title + small visible YouTube player side by side */}
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-        <div ref={containerRef} style={{ width: 60, height: 34, flexShrink: 0 }} />
+        <div ref={containerRef} style={{ width: 200, height: 200, flexShrink: 0 }} />
         <Box>Shake It - Metro Station</Box>
       </Box>
 

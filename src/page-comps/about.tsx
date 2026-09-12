@@ -18,7 +18,7 @@ function About() {
                 &nbsp;Georgia's Blurbs
             </Typography>
 
-            <Typography sx={{ fontWeight: 'bold', px: 1, pt: 2, color: "#c87d45", }}>
+            <Typography sx={{ fontWeight: 'bold', px: 1, pt: 2, color: "#c87d45" }}>
                 About me:
             </Typography>
             <Typography sx={{ px: 1, whiteSpace: 'pre-wrap' }}>
