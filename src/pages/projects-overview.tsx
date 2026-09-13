@@ -357,21 +357,37 @@ function ProjectOverview() {
     return (
         <Box sx={{ width: "100%", maxWidth: 960, mx: "auto", userSelect: "none" }}>
             {/* Header */}
-            <Stack direction="row" sx={{ justifyContent: "space-between", alignItems: "baseline", mb: 1 }}>
-                <Typography
-                    sx={{
-                        fontSize: { xs: 16, sm: 20 },
-                        color: "#08060d",
-                        fontWeight: "bold",
-                        letterSpacing: "-0.02em",
-                    }}
-                >
-                    Projects
-                </Typography>
-                <Typography sx={{ fontSize: 12, color: "#555" }}>
-                    Drag, scroll, or use arrows
-                </Typography>
-            </Stack>
+            <Box sx={{ borderRadius: 2 }}>
+                {/* Header row */}
+                <Box sx={{
+                    backgroundImage: "repeating-linear-gradient(0deg, rgba(0,0,0,0.02), rgba(0,0,0,0.02) 1px, transparent 5px, transparent 5px)",
+                    px: 1,
+                    bgcolor: "#cfdaf0"
+                }}>
+                    <Typography sx={{
+                        fontSize: 20,
+                        color: "#000000",
+                        fontWeight: 550
+                    }}>
+                        Projects
+                    </Typography>
+                </Box>
+
+                {/* Sub row */}
+                <Box sx={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    px: 1,
+                    bgcolor: "#eceef2",
+                    borderTop: "1.5px solid #f4f5f7",
+                }}>
+                    <Typography sx={{ fontSize: 16 }}>
+                        Drag, Scroll or Use Arrows.
+                    </Typography>
+                </Box>
+            </Box>
+            <br />
 
             {/* 3D Cover Flow Stage */}
             <Box
@@ -499,7 +515,7 @@ function ProjectOverview() {
                                     left: 0,
                                     right: 0,
                                     padding: "8px 12px",
-                                    background: "linear-gradient(180deg, rgba(13,111,199,0) 0%, rgba(13,111,199,0.7) 100%)",
+                                    background: "linear-gradient(180deg, rgba(0,0,0, 0) 0%, rgba(162, 144, 224, 0.7) 100%)",
                                     color: "white",
                                     zIndex: 4,
                                     pointerEvents: "none",

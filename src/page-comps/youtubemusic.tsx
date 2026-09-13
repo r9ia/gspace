@@ -163,8 +163,8 @@ export default function Music() {
 
     playerRef.current = new window.YT.Player(containerRef.current, {
       videoId: VIDEO_ID,
-      width: '200',
-      height: '200',
+      width: '290',
+      height: '150',
       playerVars: {
         controls: 0,
         disablekb: 1,
@@ -226,11 +226,10 @@ export default function Music() {
   }
 
   return (
-    <Box sx={{ ...getGlassTabSx("107,149,207"), borderRadius: 1, padding: 2, color: 'black' }}>
+    <Box sx={{ borderRadius: 1, padding: 2, color: 'black', border: "1px solid #ccc" }}>
       {/* Song title + small visible YouTube player side by side */}
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-        <div ref={containerRef} style={{ width: 200, height: 200, flexShrink: 0 }} />
-        <Box>Shake It - Metro Station</Box>
+        <div ref={containerRef} style={{ width: 290, height: 150, flexShrink: 0 }} />
       </Box>
 
       {/* progress bar + time, same line */}
