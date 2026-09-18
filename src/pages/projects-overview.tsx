@@ -72,7 +72,6 @@ function ActiveProjectDetails({ project }: { project: ProjectInterface }) {
     return (
         <Box
             sx={{
-                ...getGlassTabSx("196, 215, 255"),
                 color: "black",
                 padding: { xs: 2.5, sm: 3 },
                 borderRadius: 2,
@@ -108,7 +107,7 @@ function ActiveProjectDetails({ project }: { project: ProjectInterface }) {
                     fontWeight: 500,
                 }}
             >
-                <Box component="span" sx={{ fontWeight: 700, color: "#0d6fc7" }}>Tags:</Box> {project.tags}
+                <Box component="span" sx={{ fontWeight: 700, color: "#0d6fc7" }}></Box> {project.tags}
             </Typography>
 
             {project.description && (

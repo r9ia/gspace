@@ -11,11 +11,11 @@ export interface ExperienceInterface {
 
 export const EXPERIENCES: ExperienceInterface[] = [
     {
-        company:"IEEE University of Toronto Branch",
+        company: "IEEE University of Toronto Branch",
         title: "Web Associate",
         date: "June 2026 - Present",
-        stack: ["React", "Javascript","MongoDB"],
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+        stack: ["React", "Javascript", "Django"],
+        description: "- redesigning MakeUoft website\n- implementing new features ",
         cover: "ieee-1.png",
     },
     {
@@ -23,7 +23,7 @@ export const EXPERIENCES: ExperienceInterface[] = [
         title: "Software Engineer Intern",
         date: "May 2026 - Present",
         stack: ["React", "Typescript", "Google Firebase"],
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+        description: "- Building end-to-end features for a Toronto-based non-profit organization.\n- Worked on developing new features and improving existing ones",
         cover: "needlist.png",
     },
 ]

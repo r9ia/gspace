@@ -4,7 +4,6 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import VolumeOffIcon from '@mui/icons-material/VolumeOff';
-import { getGlassTabSx } from '../design/liquid-glass';
 
 // Tell TypeScript about the global YT object the API script injects
 declare global {
@@ -14,7 +13,6 @@ declare global {
   }
 }
 
-//SHAKE IT METRO STATION fire emoji times four
 const VIDEO_ID = 'f2mvXaqpUxY'; // url of video after v=
 
 // XP/WMP-style glossy round button
@@ -163,8 +161,8 @@ export default function Music() {
 
     playerRef.current = new window.YT.Player(containerRef.current, {
       videoId: VIDEO_ID,
-      width: '290',
-      height: '150',
+      width: '310',
+      height: '200',
       playerVars: {
         controls: 0,
         disablekb: 1,
@@ -229,7 +227,7 @@ export default function Music() {
     <Box sx={{ borderRadius: 1, padding: 2, color: 'black', border: "1px solid #ccc" }}>
       {/* Song title + small visible YouTube player side by side */}
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-        <div ref={containerRef} style={{ width: 290, height: 150, flexShrink: 0 }} />
+        <div ref={containerRef} style={{ width: 310, height: 200, flexShrink: 0 }} />
       </Box>
 
       {/* progress bar + time, same line */}

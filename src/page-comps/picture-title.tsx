@@ -7,7 +7,7 @@ function PictureTitle() {
         <Box sx={{ textAlign: "left", marginBottom: 2, display: "flex", padding: "7" }}>
             <Box>
                 <h1 style={{ fontSize: 23, margin: "0 0 10px", color: COLOURS.text }}>georgia wu </h1>
-                <img src="website image.jpg" width={190} style={{ display: "block" }} />
+                <img src="picture.jpg" width={190} style={{ display: "block" }} />
             </Box>
             <Box sx={{ margin: 1, textAlign: "left", fontSize: "xs" }}>
                 <Typography>"^_^"</Typography>
@@ -16,7 +16,7 @@ function PictureTitle() {
                 <Typography>Toronto, ON, CA</Typography>
                 <Typography>University of Toronto ECE</Typography>
                 <br />
-                <Typography>Last Login: Sept 1/26</Typography>
+                <Typography>Last Login: Sept 17/26</Typography>
 
             </Box>
         </Box>

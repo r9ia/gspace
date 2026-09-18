@@ -52,8 +52,8 @@ function Experience() {
                         {/*date header*/}
                         <Typography sx={{
                             color: "#6b6868",
-                            fontWeight:"light",
-                            fontSize:15
+                            fontWeight: "light",
+                            fontSize: 15
                         }} >
                             {experience.date}
 
@@ -81,38 +81,35 @@ function Experience() {
                                 </Typography>
 
                                 {/*stack tags*/}
-                                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1}}>
+                                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
                                     {experience.stack.map((tech) => (
                                         <Box>
                                             <Typography sx={{
-                                                 ...getGlassTabSx("246, 206, 157"),
+                                                ...getGlassTabSx("246, 206, 157"),
                                                 backgroundImage: "repeating-linear-gradient(0deg, rgba(0,0,0,0.02), rgba(0,0,0,0.02) 1px, transparent 5px, transparent 5px)",
                                                 bgcolor: "#e39356",
                                                 color: "#000000",
-                                                borderRadius:1,
-                                                px:1,
-                                                fontSize:12
-                                                }}>
+                                                borderRadius: 1,
+                                                px: 1,
+                                                fontSize: 12
+                                            }}>
                                                 {tech}
                                             </Typography>
                                         </Box>
                                     ))}
                                 </Box>
 
-
-                                {experience.description && (
-                                    <Typography sx={{pt:1.5}}>
-                                        {experience.description}
-                                    </Typography>
-                                )}
+                                <Typography sx={{ pt: 1.5, whiteSpace: 'pre-line' }}>
+                                    {experience.description}
+                                </Typography>
 
                             </Box>
 
                             {/*cover image*/}
-                            <Box sx={{ml: "auto"}}>
+                            <Box sx={{ ml: "auto" }}>
                                 <img src={experience.cover} width={130} />
                             </Box>
-                            
+
                         </Box>
                         <br />
                     </Box>
