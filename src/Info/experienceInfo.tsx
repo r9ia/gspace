@@ -15,7 +15,7 @@ export const EXPERIENCES: ExperienceInterface[] = [
         title: "Web Associate",
         date: "June 2026 - Present",
         stack: ["React", "Javascript", "Django"],
-        description: "- redesigning MakeUoft website\n- implementing new features ",
+        description: "- Currently redesigning MakeUofT hackathon site + hardware signout system used by 260+ hackers\n- Shipped new features in Figma → React/Django pipeline to keep up with chapter events",
         cover: "ieee-1.png",
     },
     {
@@ -23,7 +23,7 @@ export const EXPERIENCES: ExperienceInterface[] = [
         title: "Software Engineer Intern",
         date: "May 2026 - Present",
         stack: ["React", "Typescript", "Google Firebase"],
-        description: "- Building end-to-end features for a Toronto-based non-profit organization.\n- Worked on developing new features and improving existing ones",
+        description: "- Built end-to-end features for a Toronto-based non-profit, from DB architecture to UI\n- Designed saved-carts flow linking store checkout to a charity's live wishlist\n- Currently mentoring incoming software engineering interns",
         cover: "needlist.png",
     },
 ]

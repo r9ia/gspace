@@ -18,7 +18,7 @@ export const PROJECTS: ProjectInterface[] = [
     {
         title: "Reparo",
         date: "March 2026",
-        tags: "Computer Vision, Swift, Agentic AI, Gemini API,  SerpAPI",
+        tags: "Reactiv, Swift, Agentic AI, Gemini API,  SerpAPI",
         description: "Hack Canada Winner - 1st Place Reactiv Track ($5000 prize) + Most Technically Complex Agentic AI Hack Finalist. Computer vision powered repair assistant that identifies broken components from an image, generates a repair plan, and automatically finds the parts needed to complete the repair. I implemented SerpAPI which assists with finding item listings of parts, tuned towards the user's needs.  ",
         cover: "covers/reparo.png",
         links: [
