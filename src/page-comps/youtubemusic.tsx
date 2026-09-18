@@ -132,6 +132,7 @@ export default function Music() {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [volume, setVolume] = useState(50); // 0-100, matches YT API scale
+  const prevVolumeRef = useRef(50);
 
   useEffect(() => {
     // If the API script is already loaded (e.g. on hot reload), just init
@@ -161,7 +162,7 @@ export default function Music() {
 
     playerRef.current = new window.YT.Player(containerRef.current, {
       videoId: VIDEO_ID,
-      width: '310',
+      width: '300',
       height: '200',
       playerVars: {
         controls: 0,
@@ -220,14 +221,32 @@ export default function Music() {
   function handleVolumeChange(_event: Event, value: number | number[]) {
     const newVolume = value as number;
     setVolume(newVolume);
+    if (newVolume > 0) {
+      prevVolumeRef.current = newVolume;
+      playerRef.current?.unMute();
+    }
     playerRef.current?.setVolume(newVolume);
+  }
+
+  function handleToggleMute() {
+    if (!playerRef.current) return;
+    if (volume > 0) {
+      prevVolumeRef.current = volume;
+      setVolume(0);
+      playerRef.current.setVolume(0);
+    } else {
+      const restoredVolume = prevVolumeRef.current > 0 ? prevVolumeRef.current : 50;
+      setVolume(restoredVolume);
+      playerRef.current.unMute();
+      playerRef.current.setVolume(restoredVolume);
+    }
   }
 
   return (
     <Box sx={{ borderRadius: 1, padding: 2, color: 'black', border: "1px solid #ccc" }}>
       {/* Song title + small visible YouTube player side by side */}
-      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-        <div ref={containerRef} style={{ width: 310, height: 200, flexShrink: 0 }} />
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, justifyContent: 'center' }}>
+        <div ref={containerRef} style={{ width: 300, height: 200, flexShrink: 0 }} />
       </Box>
 
       {/* progress bar + time, same line */}
@@ -268,7 +287,7 @@ export default function Music() {
 
         {/* Volume control: icon + always-visible horizontal slider */}
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, pr: 1 }}>
-          <XPButton disabled={!isReady} sx={{ width: 28, height: 28 }}>
+          <XPButton onClick={handleToggleMute} disabled={!isReady} sx={{ width: 28, height: 28 }}>
             {volume === 0 ? <VolumeOffIcon sx={{ fontSize: 16 }} /> : <VolumeUpIcon sx={{ fontSize: 16 }} />}
           </XPButton>
 

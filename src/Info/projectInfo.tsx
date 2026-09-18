@@ -14,27 +14,40 @@ export interface ProjectLink {
 }
 
 export const PROJECTS: ProjectInterface[] = [
-    {
-        title: "gspace.net",
-        date: "August 2026",
-        tags: "Web Development",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
-        cover: "379.png",
-        links: [{ label: "try on hithub", url: "link" }, { label: "try on devpost", url: "ajsha" }]
-    },
-    {
-        title: "dread director",
-        date: "July 2026",
-        tags: "3D Unity, Python, Raspberry Pi 5",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
-        cover: "379.png",
-    },
+   
     {
         title: "Reparo",
         date: "March 2026",
-        tags: "Computer Vision, Agentic AI",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
-        cover: "379.png",
+        tags: "Computer Vision, Swift, Agentic AI, Gemini API,  SerpAPI",
+        description: "Hack Canada Winner - 1st Place Reactiv Track ($5000 prize) + Most Technically Complex Agentic AI Hack Finalist. Computer vision powered repair assistant that identifies broken components from an image, generates a repair plan, and automatically finds the parts needed to complete the repair. I implemented SerpAPI which assists with finding item listings of parts, tuned towards the user's needs.  ",
+        cover: "covers/reparo.png",
+        links: [
+            {
+                label: "GitHub",
+                url: "https://github.com/Karan-Gupta07/RepairBOT"
+            },
+            {
+                label: "Devpost",
+                url: "https://devpost.com/software/reparo"
+            }
+        ]
+    },
+    {
+        title: "VOXIO",
+        date: "Jan 2025",
+        tags: "Javascript, HTML, CSS",
+        description: "One of the first websites I've ever worked on: a showcase site for VOXIO, a computer vision hack that assists the Deaf community with communication by detecting sign language. Made for DeltaHacks 2025.",
+        cover: "covers/voxio.png",
+        links: [
+            {
+                label: "GitHub",
+                url: "https://github.com/r9ia/voxio"
+            },
+            {
+                label: "Website",
+                url: "https://r9ia.github.io/voxio/"
+            }
+        ]
     }
 ]
 

@@ -1,6 +1,6 @@
 import { Box, Divider, Stack, Typography } from "@mui/material"
 import { EXPERIENCES } from "../Info/experienceInfo"
-import { getGlassTabSx } from "../design/liquid-glass"
+import { ORANGE_CHIP_SX } from "../design/chips"
 
 function Experience() {
     return (
@@ -83,16 +83,8 @@ function Experience() {
                                 {/*stack tags*/}
                                 <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
                                     {experience.stack.map((tech) => (
-                                        <Box>
-                                            <Typography sx={{
-                                                ...getGlassTabSx("246, 206, 157"),
-                                                backgroundImage: "repeating-linear-gradient(0deg, rgba(0,0,0,0.02), rgba(0,0,0,0.02) 1px, transparent 5px, transparent 5px)",
-                                                bgcolor: "#e39356",
-                                                color: "#000000",
-                                                borderRadius: 1,
-                                                px: 1,
-                                                fontSize: 12
-                                            }}>
+                                        <Box key={tech}>
+                                            <Typography sx={ORANGE_CHIP_SX}>
                                                 {tech}
                                             </Typography>
                                         </Box>

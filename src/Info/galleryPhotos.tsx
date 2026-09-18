@@ -1,5 +1,4 @@
 export const GALLERYPHOTOS = [
-    { img: 'gallery_photos/bike.jpg', title: 'Bike' },
     { img: 'gallery_photos/blizzarding.jpg', title: 'Blizzarding' },
     { img: 'gallery_photos/building.jpg', title: 'Building' },
     { img: 'gallery_photos/christmaslights.jpg', title: 'Christmas Lights' },

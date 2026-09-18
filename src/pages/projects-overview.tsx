@@ -1,48 +1,24 @@
 import React, { useState, useEffect, useRef, useCallback } from "react"
-import { Box, Stack, Typography, styled } from "@mui/material"
+import { Box, Divider, Stack, Typography, styled } from "@mui/material"
 import { Link as RouterLink } from "react-router-dom"
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft"
 import ChevronRightIcon from "@mui/icons-material/ChevronRight"
 import anime from "animejs"
 import { PROJECTS, type ProjectInterface } from "../Info/projectInfo"
-import { getGlassTabSx } from "../design/liquid-glass"
+import { ORANGE_CHIP_SX } from "../design/chips"
 
-// Dimensions for the 3D cover cards
-const CARD_WIDTH = 250
-const CARD_HEIGHT = 250
-const STAGE_HEIGHT = 325
-
-// Pill-style glass button for direct project access
-const GlassPillButton = styled(Box)<{ active?: boolean }>(({ active }) => ({
-    padding: "6px 14px",
-    borderRadius: 999,
-    fontSize: 13,
-    cursor: "pointer",
-    whiteSpace: "nowrap",
-    userSelect: "none",
-    color: active ? "white" : "#1a4f8f",
-    background: active
-        ? "linear-gradient(180deg, #8fd3f9 0%, #3f9fe0 45%, #0d6fc7 100%)"
-        : "rgba(255,255,255,0.5)",
-    border: active ? "1px solid #0a4f8f" : "1px solid rgba(107,149,207,0.4)",
-    boxShadow: active
-        ? "inset 0 1px 1px rgba(255,255,255,0.5), 0 1px 2px rgba(0,0,0,0.2)"
-        : "none",
-    transition: "all 0.2s ease",
-    "&:hover": {
-        background: active
-            ? "linear-gradient(180deg, #a3ddfb 0%, #52aeeb 45%, #1a7fd6 100%)"
-            : "rgba(255,255,255,0.8)",
-    },
-}))
+// Dimensions for the 3D cover cards 
+const CARD_WIDTH = 200
+const CARD_HEIGHT = 200
+const STAGE_HEIGHT = 260
 
 // Glassy navigation chevron buttons
 const NavChevron = styled(Box)<{ side: "left" | "right" }>(({ side }) => ({
     position: "absolute",
     top: "38%",
-    [side]: 12,
-    width: 44,
-    height: 44,
+    [side]: 8,
+    width: 38,
+    height: 38,
     borderRadius: "50%",
     zIndex: 120,
     cursor: "pointer",
@@ -83,9 +59,16 @@ function ActiveProjectDetails({ project }: { project: ProjectInterface }) {
                 transition: "opacity 0.3s ease",
             }}
         >
-            <Typography sx={{ fontSize: 13, color: "#1a4f8f", fontWeight: 600, mb: 0.5 }}>
+            {/*date header*/}
+            <Typography sx={{
+                color: "#6b6868",
+                fontWeight: "light",
+                fontSize: 15
+            }} >
                 {project.date}
             </Typography>
+
+            <Divider />
 
             <Typography
                 component="h3"
@@ -94,21 +77,24 @@ function ActiveProjectDetails({ project }: { project: ProjectInterface }) {
                     fontWeight: 800,
                     fontSize: { xs: 20, sm: 22 },
                     color: "#08060d",
+                    pt: 1
                 }}
             >
                 {project.title}
             </Typography>
 
-            <Typography
-                sx={{
-                    fontSize: 13,
-                    color: "#2c3e50",
-                    mb: 1,
-                    fontWeight: 500,
-                }}
-            >
-                <Box component="span" sx={{ fontWeight: 700, color: "#0d6fc7" }}></Box> {project.tags}
-            </Typography>
+            {/* tags */}
+            {project.tags && (
+                <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, mb: 1.5 }}>
+                    {project.tags.split(",").map((tag) => (
+                        <Box key={tag.trim()}>
+                            <Typography sx={ORANGE_CHIP_SX}>
+                                {tag.trim()}
+                            </Typography>
+                        </Box>
+                    ))}
+                </Box>
+            )}
 
             {project.description && (
                 <Typography
@@ -159,7 +145,7 @@ function ActiveProjectDetails({ project }: { project: ProjectInterface }) {
                         target="_blank"
                         rel="noreferrer"
                         sx={{
-                            fontSize: 12,
+                            fontSize: 13,
                             color: "#1a4f8f",
                             textDecoration: "none",
                             padding: "3px 10px",
@@ -183,6 +169,7 @@ function ActiveProjectDetails({ project }: { project: ProjectInterface }) {
 function ProjectOverview() {
     const [activeIndex, setActiveIndex] = useState(0)
     const cardRefs = useRef<(HTMLDivElement | null)[]>([])
+    const itemRefs = useRef<(HTMLDivElement | null)[]>([])
     const stageRef = useRef<HTMLDivElement | null>(null)
 
     // Virtual continuous position: 0.0, 1.0, 2.0...
@@ -228,16 +215,16 @@ function ProjectOverview() {
                 // Stack to the left
                 const factor = Math.min(1, Math.max(0, -dist))
                 rotateY = factor * 55
-                translateX = -170 * factor + (dist + 1 * factor) * 75
-                translateZ = -180 * factor
+                translateX = -140 * factor + (dist + 1 * factor) * 60
+                translateZ = -150 * factor
                 brightness = 1 - factor * 0.35
                 opacity = Math.max(0.2, 1 - (absDist - 1) * 0.3)
             } else {
                 // Stack to the right
                 const factor = Math.min(1, Math.max(0, dist))
                 rotateY = -factor * 55
-                translateX = 170 * factor + (dist - 1 * factor) * 75
-                translateZ = -180 * factor
+                translateX = 140 * factor + (dist - 1 * factor) * 60
+                translateZ = -150 * factor
                 brightness = 1 - factor * 0.35
                 opacity = Math.max(0.2, 1 - (absDist - 1) * 0.3)
             }
@@ -300,6 +287,14 @@ function ProjectOverview() {
         updateTransforms(0)
     }, [updateTransforms])
 
+    // Keep active item scrolled into view in the menu selection box
+    useEffect(() => {
+        itemRefs.current[activeIndex]?.scrollIntoView({
+            block: "nearest",
+            behavior: "smooth",
+        })
+    }, [activeIndex])
+
     // Keyboard navigation (Left/Right arrow keys)
     useEffect(() => {
         function handleKeyDown(e: KeyboardEvent) {
@@ -328,8 +323,8 @@ function ProjectOverview() {
         if (Math.abs(deltaX) > 5) {
             dragMoved.current = true
         }
-        // Sensitivity: 220px drag = 1 card jump
-        const newPos = dragStartPos.current - deltaX / 220
+        // Sensitivity: 180px drag = 1 card jump
+        const newPos = dragStartPos.current - deltaX / 180
         const clampedPos = Math.max(-0.4, Math.min(PROJECTS.length - 0.6, newPos))
         currentPos.current = clampedPos
         updateTransforms(clampedPos)
@@ -388,195 +383,302 @@ function ProjectOverview() {
             </Box>
             <br />
 
-            {/* 3D Cover Flow Stage */}
+            {/* Cover Flow + Menu Selection Box Container */}
             <Box
-                ref={stageRef}
-                onMouseDown={(e) => handlePointerDown(e.clientX)}
-                onMouseMove={(e) => handlePointerMove(e.clientX)}
-                onMouseUp={handlePointerUp}
-                onMouseLeave={handlePointerUp}
-                onTouchStart={(e) => handlePointerDown(e.touches[0].clientX)}
-                onTouchMove={(e) => handlePointerMove(e.touches[0].clientX)}
-                onTouchEnd={handlePointerUp}
                 sx={{
-                    position: "relative",
-                    height: STAGE_HEIGHT,
-                    perspective: "1000px",
-                    perspectiveOrigin: "50% 45%",
-                    overflow: "hidden",
-                    borderRadius: 3,
-                    cursor: "grab",
-                    "&:active": { cursor: "grabbing" },
-                    background: "radial-gradient(ellipse at 50% 55%, rgba(196, 215, 255, 0.45) 0%, rgba(255, 255, 255, 0.1) 70%)",
-                    border: "1px solid rgba(255, 255, 255, 0.6)",
-                    boxShadow: "inset 0 1px 2px rgba(255,255,255,0.8), 0 8px 30px rgba(107,149,207,0.15)",
+                    display: "flex",
+                    flexDirection: { xs: "column", md: "row" },
+                    gap: 2,
+                    alignItems: "stretch",
                 }}
             >
-                {/* Glossy floor reflection line */}
+                {/* 3D Cover Flow Stage */}
                 <Box
+                    ref={stageRef}
+                    onMouseDown={(e) => handlePointerDown(e.clientX)}
+                    onMouseMove={(e) => handlePointerMove(e.clientX)}
+                    onMouseUp={handlePointerUp}
+                    onMouseLeave={handlePointerUp}
+                    onTouchStart={(e) => handlePointerDown(e.touches[0].clientX)}
+                    onTouchMove={(e) => handlePointerMove(e.touches[0].clientX)}
+                    onTouchEnd={handlePointerUp}
                     sx={{
-                        position: "absolute",
-                        bottom: 95,
-                        left: "10%",
-                        right: "10%",
-                        height: "1px",
-                        background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.85) 50%, transparent 100%)",
-                        boxShadow: "0 0 12px rgba(255,255,255,0.9)",
-                        pointerEvents: "none",
-                        zIndex: 2,
+                        flex: 1,
+                        minWidth: 0,
+                        position: "relative",
+                        height: STAGE_HEIGHT,
+                        perspective: "1000px",
+                        perspectiveOrigin: "50% 45%",
+                        overflow: "hidden",
+                        borderRadius: 3,
+                        cursor: "grab",
+                        "&:active": { cursor: "grabbing" },
+                        background: "radial-gradient(ellipse at 50% 55%, rgba(196, 215, 255, 0.45) 0%, rgba(255, 255, 255, 0.1) 70%)",
+                        border: "1px solid rgba(255, 255, 255, 0.6)",
+                        boxShadow: "inset 0 1px 2px rgba(255,255,255,0.8), 0 8px 30px rgba(107,149,207,0.15)",
                     }}
-                />
-
-                {/* Left Navigation Chevron */}
-                {PROJECTS.length > 1 && (
-                    <NavChevron
-                        side="left"
-                        onClick={(e: React.MouseEvent) => {
-                            e.stopPropagation()
-                            goPrev()
-                        }}
-                        aria-label="Previous project"
-                    >
-                        <ChevronLeftIcon sx={{ fontSize: 30 }} />
-                    </NavChevron>
-                )}
-
-                {/* Cover Flow 3D Cards */}
-                {PROJECTS.map((project, i) => (
+                >
+                    {/* Glossy floor reflection line */}
                     <Box
-                        key={project.title}
-                        ref={(el) => {
-                            cardRefs.current[i] = el as HTMLDivElement | null
-                        }}
-                        onClick={() => handleCardClick(i)}
                         sx={{
                             position: "absolute",
-                            left: "50%",
-                            top: 24,
-                            width: CARD_WIDTH,
-                            height: CARD_HEIGHT,
-                            marginLeft: `-${CARD_WIDTH / 2}px`,
-                            transformStyle: "preserve-3d",
-                            willChange: "transform, filter, opacity",
-                            // Classic iTunes reflection
-                            WebkitBoxReflect: "below 6px linear-gradient(transparent 55%, rgba(255,255,255,0.35))",
+                            bottom: 76,
+                            left: "10%",
+                            right: "10%",
+                            height: "1px",
+                            background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.85) 50%, transparent 100%)",
+                            boxShadow: "0 0 12px rgba(255,255,255,0.9)",
+                            pointerEvents: "none",
+                            zIndex: 2,
                         }}
-                    >
-                        {/* Glass card container with Frutiger Aero liquid glass styling */}
+                    />
+
+                    {/* Left Navigation Chevron */}
+                    {PROJECTS.length > 1 && (
+                        <NavChevron
+                            side="left"
+                            onClick={(e: React.MouseEvent) => {
+                                e.stopPropagation()
+                                goPrev()
+                            }}
+                            aria-label="Previous project"
+                        >
+                            <ChevronLeftIcon sx={{ fontSize: 26 }} />
+                        </NavChevron>
+                    )}
+
+                    {/* Cover Flow 3D Cards */}
+                    {PROJECTS.map((project, i) => (
                         <Box
+                            key={project.title}
+                            ref={(el) => {
+                                cardRefs.current[i] = el as HTMLDivElement | null
+                            }}
+                            onClick={() => handleCardClick(i)}
                             sx={{
-                                width: "100%",
-                                height: "100%",
-                                borderRadius: "14px",
-                                overflow: "hidden",
-                                position: "relative",
-                                background: "linear-gradient(145deg, rgba(255,255,255,0.65), rgba(196,215,255,0.4))",
-                                border: "1.5px solid rgba(255, 255, 255, 0.75)",
-                                boxShadow: "0 14px 30px rgba(13, 111, 199, 0.28), inset 0 1px 2px rgba(255,255,255,0.9)",
-                                display: "flex",
-                                flexDirection: "column",
+                                position: "absolute",
+                                left: "50%",
+                                top: 18,
+                                width: CARD_WIDTH,
+                                height: CARD_HEIGHT,
+                                marginLeft: `-${CARD_WIDTH / 2}px`,
+                                transformStyle: "preserve-3d",
+                                willChange: "transform, filter, opacity",
+                                // Classic iTunes reflection
+                                WebkitBoxReflect: "below 6px linear-gradient(transparent 55%, rgba(255,255,255,0.35))",
                             }}
                         >
-                            {/* Project Cover Image */}
+                            {/* Glass card container with Frutiger Aero liquid glass styling */}
                             <Box
-                                component="img"
-                                src={project.cover}
-                                alt={project.title}
                                 sx={{
                                     width: "100%",
                                     height: "100%",
-                                    objectFit: "cover",
-                                    userSelect: "none",
-                                    pointerEvents: "none",
-                                }}
-                            />
-
-                            {/* Specular gloss top highlight */}
-                            <Box
-                                sx={{
-                                    position: "absolute",
-                                    top: 0,
-                                    left: 0,
-                                    right: 0,
-                                    height: "46%",
-                                    background: "linear-gradient(180deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 100%)",
-                                    borderRadius: "14px 14px 50% 50% / 14px 14px 100% 100%",
-                                    pointerEvents: "none",
-                                    zIndex: 3,
-                                }}
-                            />
-
-                            {/* Bottom glassy card badge showing title */}
-                            <Box
-                                sx={{
-                                    position: "absolute",
-                                    bottom: 0,
-                                    left: 0,
-                                    right: 0,
-                                    padding: "8px 12px",
-                                    background: "linear-gradient(180deg, rgba(0,0,0, 0) 0%, rgba(162, 144, 224, 0.7) 100%)",
-                                    color: "white",
-                                    zIndex: 4,
-                                    pointerEvents: "none",
+                                    borderRadius: "14px",
+                                    overflow: "hidden",
+                                    position: "relative",
+                                    background: "linear-gradient(145deg, rgba(255,255,255,0.65), rgba(196,215,255,0.4))",
+                                    border: "1.5px solid rgba(255, 255, 255, 0.75)",
+                                    boxShadow: "0 14px 30px rgba(13, 111, 199, 0.28), inset 0 1px 2px rgba(255,255,255,0.9)",
+                                    display: "flex",
+                                    flexDirection: "column",
                                 }}
                             >
-                                <Typography
+                                {/* Project Cover Image */}
+                                <Box
+                                    component="img"
+                                    src={project.cover}
+                                    alt={project.title}
                                     sx={{
-                                        fontSize: 14,
-                                        fontWeight: "bold",
-                                        textShadow: "0 1px 3px rgba(0,0,0,0.7)",
-                                        whiteSpace: "nowrap",
-                                        overflow: "hidden",
-                                        textOverflow: "ellipsis",
+                                        width: "100%",
+                                        height: "100%",
+                                        objectFit: "contain",
+                                        userSelect: "none",
+                                        pointerEvents: "none",
+                                    }}
+                                />
+
+                                {/* Specular gloss top highlight */}
+                                <Box
+                                    sx={{
+                                        position: "absolute",
+                                        top: 0,
+                                        left: 0,
+                                        right: 0,
+                                        height: "46%",
+                                        background: "linear-gradient(180deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 100%)",
+                                        borderRadius: "14px 14px 50% 50% / 14px 14px 100% 100%",
+                                        pointerEvents: "none",
+                                        zIndex: 3,
+                                    }}
+                                />
+
+                                {/* Bottom glassy card badge showing title */}
+                                <Box
+                                    sx={{
+                                        position: "absolute",
+                                        bottom: 0,
+                                        left: 0,
+                                        right: 0,
+                                        padding: "6px 10px",
+                                        background: "linear-gradient(180deg, rgba(0,0,0, 0) 0%, rgba(13, 111, 199, 0.7) 100%)",
+                                        color: "white",
+                                        zIndex: 4,
+                                        pointerEvents: "none",
                                     }}
                                 >
-                                    {project.title}
-                                </Typography>
+                                    <Typography
+                                        sx={{
+                                            fontSize: 13,
+                                            fontWeight: "bold",
+                                            textShadow: "0 1px 3px rgba(0,0,0,0.7)",
+                                            whiteSpace: "nowrap",
+                                            overflow: "hidden",
+                                            textOverflow: "ellipsis",
+                                        }}
+                                    >
+                                        {project.title}
+                                    </Typography>
+                                </Box>
                             </Box>
                         </Box>
-                    </Box>
-                ))}
+                    ))}
 
-                {/* Right Navigation Chevron */}
-                {PROJECTS.length > 1 && (
-                    <NavChevron
-                        side="right"
-                        onClick={(e: React.MouseEvent) => {
-                            e.stopPropagation()
-                            goNext()
+                    {/* Right Navigation Chevron */}
+                    {PROJECTS.length > 1 && (
+                        <NavChevron
+                            side="right"
+                            onClick={(e: React.MouseEvent) => {
+                                e.stopPropagation()
+                                goNext()
+                            }}
+                            aria-label="Next project"
+                        >
+                            <ChevronRightIcon sx={{ fontSize: 26 }} />
+                        </NavChevron>
+                    )}
+                </Box>
+
+                {/* Menu Selection Box Beside Coverflow */}
+                <Box
+                    sx={{
+                        width: { xs: "100%", md: 170 },
+                        height: STAGE_HEIGHT,
+                        flexShrink: 0,
+                        display: "flex",
+                        flexDirection: "column",
+                        borderRadius: 1,
+                        overflow: "hidden",
+                        background: "#f0f4f9",
+                        border: "1px solid #cfdaf0",
+                        boxShadow: "inset 0 1px 2px rgba(0,0,0,0.06)",
+                    }}
+                >
+                    {/* Menu Header */}
+                    <Box
+                        sx={{
+                            px:0.7,
+                            bgcolor: "#cfdaf0",
+                            borderBottom: "1px solid #9fb9db",
+                            backgroundImage: "repeating-linear-gradient(0deg, rgba(0,0,0,0.02), rgba(0,0,0,0.02) 1px, transparent 5px, transparent 5px)",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "space-between",
                         }}
-                        aria-label="Next project"
                     >
-                        <ChevronRightIcon sx={{ fontSize: 30 }} />
-                    </NavChevron>
-                )}
-            </Box>
 
-            {/* Direct-access glassy pill button row */}
-            <Stack
-                direction="row"
-                spacing={1}
-                sx={{
-                    width: "100%",
-                    justifyContent: "center",
-                    flexWrap: "wrap",
-                    my: 2.5,
-                }}
-            >
-                {PROJECTS.map((p, i) => (
-                    <GlassPillButton
-                        key={p.title}
-                        active={i === activeIndex}
-                        onClick={() => animateTo(i)}
+                        <Typography sx={{ fontSize: 12, fontWeight: 600 }}>
+                            {PROJECTS.length} Projects
+                        </Typography>
+                    </Box>
+
+                    {/* Scrollable list of project titles */}
+                    <Box
+                        sx={{
+                            flex: 1,
+                            overflowY: "auto",
+                            p: 0.6,
+                            display: "flex",
+                            flexDirection: "column",
+                            "&::-webkit-scrollbar": {
+                                width: "5px",
+                            },
+                            "&::-webkit-scrollbar-track": {
+                                background: "#eceef2",
+                                borderRadius: "2px",
+                            },
+                            "&::-webkit-scrollbar-thumb": {
+                                background: "#b4c6e0",
+                                borderRadius: "2px",
+                                "&:hover": {
+                                    background: "#8dafd6",
+                                },
+                            },
+                        }}
                     >
-                        {p.title}
-                    </GlassPillButton>
-                ))}
-            </Stack>
+                        {PROJECTS.map((project, i) => {
+                            const isActive = i === activeIndex
+                            return (
+                                <Box
+                                    key={project.title}
+                                    ref={(el) => {
+                                        itemRefs.current[i] = el as HTMLDivElement | null
+                                    }}
+                                    onClick={() => animateTo(i)}
+                                    sx={{
+                                        py: 0.2,
+                                        borderRadius: "2px",
+                                        cursor: "pointer",
+                                        userSelect: "none",
+                                        transition: "none",
+                                        display: "flex",
+                                        flexDirection: "column",
+                                        color: isActive ? "#ffffff" : "#1a4f8f",
+                                        background: isActive ? "#0d6fc7" : "transparent",
+                                        border: isActive
+                                            ? "1px solid #08589e"
+                                            : "1px solid transparent",
+                                        "&:hover": {
+                                            background: isActive ? "#0d6fc7" : "#e0ebf9",
+                                            border: isActive ? "1px solid #08589e" : "1px solid #94bce6",
+                                        },
+                                    }}
+                                >
+                                    <Typography
+                                        sx={{
+                                            fontSize: 12,
+                                            fontWeight: isActive ? 700 : 500,
+                                            whiteSpace: "nowrap",
+                                            overflow: "hidden",
+                                            textOverflow: "ellipsis",
+                                        }}
+                                    >
+                                        {project.title}
+                                    </Typography>
+                                    {project.tags && (
+                                        <Typography
+                                            sx={{
+                                                fontSize: 10,
+                                                color: isActive ? "rgba(255,255,255,0.85)" : "#5a738e",
+                                                whiteSpace: "nowrap",
+                                                overflow: "hidden",
+                                                textOverflow: "ellipsis",
+                                            }}
+                                        >
+                                            {project.tags}
+                                        </Typography>
+                                    )}
+                                </Box>
+                            )
+                        })}
+                    </Box>
+                </Box>
+            </Box>
 
             {/* Active Project Details Card */}
             {currentProject && (
-                <ActiveProjectDetails project={currentProject} />
+                <Box sx={{ mt: 2.5 }}>
+                    <ActiveProjectDetails project={currentProject} />
+                </Box>
             )}
         </Box>
     )
