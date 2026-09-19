@@ -27,9 +27,8 @@ function About() {
                 looking to learn more about robotics, ML, game development and systems design, as well as
                 expand my fullstack and web design skills.<br /><br />
                 Outside of tech, I enjoy volleyball, badminton,
-                mystery games, karaoke and clothes shopping. i've modeled this site off of late 2000's social media, 
-                which I appreciate a lot for its straightforward and nostalgic design
-                (but check out my projects to see examples of modern websites I've designed).
+                mystery games, karaoke and clothes shopping. I've modeled this site off of late 2000's social media, 
+                which I appreciate a lot for its glossy and nostalgic design.
 
             </Typography>
 
