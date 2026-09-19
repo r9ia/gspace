@@ -8,7 +8,6 @@ function App() {
     <HashRouter>
       <CssBaseline />
       <RouteConfig />
-      <LikeCounter />
     </HashRouter>
   )
 }
