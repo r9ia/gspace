@@ -241,7 +241,7 @@ function ProjectOverview() {
     // Smoothly animate to target index with Anime.js
     const animateTo = useCallback((targetIndex: number, duration = 600) => {
         const clampedIndex = Math.max(0, Math.min(PROJECTS.length - 1, targetIndex))
-        
+
         if (animInstance.current) {
             animInstance.current.pause()
         }
@@ -377,7 +377,7 @@ function ProjectOverview() {
                     borderTop: "1.5px solid #f4f5f7",
                 }}>
                     <Typography sx={{ fontSize: { xs: 18, md: 16 } }}>
-                        Drag, Scroll or Use Arrows.
+                        Drag or Use Arrows.
                     </Typography>
                 </Box>
             </Box>
