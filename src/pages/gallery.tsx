@@ -39,7 +39,22 @@ function Gallery() {
 
             <ImageList variant="masonry" cols={3} gap={8}>
                 {GALLERYPHOTOS.map((item) => (
-                    <ImageListItem key={item.img}>
+                    <ImageListItem key={item.img} sx={{
+                        overflow: "hidden",
+                        "& img": {
+                            transition: "transform 0.2s ease",
+                        },
+                        "@media (hover: hover)": {
+                            "&:hover img": {
+                                transform: "scale(1.05)",
+                            },
+                        },
+                        "@media (prefers-reduced-motion: reduce)": {
+                            "& img": {
+                                transition: "none",
+                            },
+                        },
+                    }}>
                         <img
                             src={item.img}
                             alt={item.title}

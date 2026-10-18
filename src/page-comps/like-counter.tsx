@@ -3,6 +3,7 @@ import { onValue, set, increment } from "firebase/database"
 import { Box, ButtonBase, Typography } from "@mui/material"
 import { getGlassTabSx } from "../design/liquid-glass"
 import { likesRef } from "../firebase"
+import ThumbUpOutlined  from "@mui/icons-material/ThumbUp"
 
 export default function LikeCounter() {
     // null = still loading from Firebase
@@ -70,7 +71,6 @@ export default function LikeCounter() {
                     },
                 }}
             >
-                {/* --- LIKE ICON SLOT: PLACE YOUR ICON HERE --- */}
                 <Box
                     component="span"
                     className="like-icon-slot"
@@ -83,10 +83,9 @@ export default function LikeCounter() {
                         minHeight: "16px",
                     }}
                 >
-                    {/* 👇 Place your like icon (SVG, <img>, or MUI Icon) here */}
-                    <img src="like.png" width={18} height={18} />
 
-                    {/* 👆 Icon goes above */}
+                    <ThumbUpOutlined  sx={{ width: 18, height: 18 }} />
+
                 </Box>
 
                 <Typography

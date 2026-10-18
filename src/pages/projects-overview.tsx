@@ -122,7 +122,7 @@ function ActiveProjectDetails({ project }: { project: ProjectInterface }) {
                         sx={{
                             fontSize: 14,
                             fontWeight: 700,
-                            color: "#0d6fc7",
+                            color: "#39629b",
                             display: "inline-flex",
                             alignItems: "center",
                             gap: 0.5,
@@ -520,7 +520,7 @@ function ProjectOverview() {
                                         left: 0,
                                         right: 0,
                                         padding: "6px 10px",
-                                        background: "linear-gradient(180deg, rgba(0,0,0, 0) 0%, rgba(13, 111, 199, 0.7) 100%)",
+                                        background: "linear-gradient(180deg, rgba(0,0,0, 0) 0%, rgba(7, 88, 154, 0.7) 100%)",
                                         color: "white",
                                         zIndex: 4,
                                         pointerEvents: "none",
@@ -576,7 +576,7 @@ function ProjectOverview() {
                     {/* Menu Header */}
                     <Box
                         sx={{
-                            px:0.7,
+                            px: 0.7,
                             bgcolor: "#cfdaf0",
                             borderBottom: "1px solid #9fb9db",
                             backgroundImage: "repeating-linear-gradient(0deg, rgba(0,0,0,0.02), rgba(0,0,0,0.02) 1px, transparent 5px, transparent 5px)",
@@ -596,7 +596,7 @@ function ProjectOverview() {
                         sx={{
                             flex: 1,
                             overflowY: "auto",
-                            p: 0.6,
+                            p: 0,
                             display: "flex",
                             flexDirection: "column",
                             "&::-webkit-scrollbar": {
@@ -625,8 +625,8 @@ function ProjectOverview() {
                                     }}
                                     onClick={() => animateTo(i)}
                                     sx={{
-                                        py: 0.2,
-                                        borderRadius: "2px",
+                                        px: 0.6,
+                                        flexShrink: 0,
                                         cursor: "pointer",
                                         userSelect: "none",
                                         transition: "none",
@@ -634,18 +634,15 @@ function ProjectOverview() {
                                         flexDirection: "column",
                                         color: isActive ? "#ffffff" : "#1a4f8f",
                                         background: isActive ? "#0d6fc7" : "transparent",
-                                        border: isActive
-                                            ? "1px solid #08589e"
-                                            : "1px solid transparent",
+                                        borderBottom: "1px solid #cfdaf0",
                                         "&:hover": {
                                             background: isActive ? "#0d6fc7" : "#e0ebf9",
-                                            border: isActive ? "1px solid #08589e" : "1px solid #94bce6",
                                         },
                                     }}
                                 >
                                     <Typography
                                         sx={{
-                                            fontSize: 12,
+                                            fontSize: 13,
                                             fontWeight: isActive ? 700 : 500,
                                             whiteSpace: "nowrap",
                                             overflow: "hidden",
@@ -654,7 +651,7 @@ function ProjectOverview() {
                                     >
                                         {project.title}
                                     </Typography>
-                                    {project.tags && (
+                                    {project.date && (
                                         <Typography
                                             sx={{
                                                 fontSize: 10,
@@ -664,7 +661,7 @@ function ProjectOverview() {
                                                 textOverflow: "ellipsis",
                                             }}
                                         >
-                                            {project.tags}
+                                            {project.date}
                                         </Typography>
                                     )}
                                 </Box>

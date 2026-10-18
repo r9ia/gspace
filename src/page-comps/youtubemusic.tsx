@@ -15,20 +15,24 @@ declare global {
 
 const VIDEO_ID = 'f2mvXaqpUxY'; // url of video after v=
 
-// XP/WMP-style glossy round button
+const controlBlueGradient = 'linear-gradient(180deg, #b5cbea 0%, #6b95cf 45%, #507bb5 100%)';
+const controlBlueBorder = '1px solid #4c73a8';
+
+// XP/WMP-style glossy round button in the site's glass-tab blue
 const XPButton = styled(IconButton)(() => ({
   width: 36,
   height: 36,
-  background: 'linear-gradient(180deg, #8fd3f9 0%, #3f9fe0 45%, #0d6fc7 100%)',
-  border: '1px solid #0a4f8f',
+  background: controlBlueGradient,
+  border: controlBlueBorder,
   boxShadow: `
-    0 1px 3px rgba(0,0,0,0.4),
-    inset 0 1px 1px rgba(255,255,255,0.6),
-    inset 0 -2px 3px rgba(0,0,0,0.15)
+    0 2px 5px rgba(35,55,75,0.2),
+    inset 0 1px 2px rgba(255,255,255,0.85),
+    inset 0 -2px 3px rgba(55,80,100,0.18)
   `,
   color: 'white',
   position: 'relative',
   overflow: 'hidden',
+  transition: 'background 160ms ease, box-shadow 160ms ease',
   '&::before': {
     content: '""',
     position: 'absolute',
@@ -36,12 +40,12 @@ const XPButton = styled(IconButton)(() => ({
     left: '12%',
     width: '76%',
     height: '42%',
-    background: 'linear-gradient(180deg, rgba(255,255,255,0.75), rgba(255,255,255,0))',
+    background: 'linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.05))',
     borderRadius: '50% 50% 40% 40%',
     pointerEvents: 'none',
   },
   '&:hover': {
-    background: 'linear-gradient(180deg, #a3ddfb 0%, #52aeeb 45%, #1a7fd6 100%)',
+    background: 'linear-gradient(180deg, #c5d7ef 0%, #7da3d7 45%, #608bc1 100%)',
   },
   '&:active': {
     boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.5)',
@@ -70,7 +74,7 @@ const XPSlider = styled(Slider)(() => ({
     height: 3,
     borderRadius: 2,
     border: 'none',
-    background: 'linear-gradient(180deg, #8fd3f9 0%, #3f9fe0 45%, #0d6fc7 100%)',
+    background: controlBlueGradient,
   },
 
   // the draggable knob — now a small oval instead of a round dot
@@ -78,8 +82,8 @@ const XPSlider = styled(Slider)(() => ({
     width: 14,
     height: 9,
     borderRadius: '50% / 40%', // oval: wider radius horizontally, flatter vertically
-    background: 'linear-gradient(180deg, #8fd3f9 0%, #3f9fe0 45%, #0d6fc7 100%)',
-    border: '1px solid #0a4f8f',
+    background: controlBlueGradient,
+    border: controlBlueBorder,
     boxShadow: `
       0 1px 2px rgba(0,0,0,0.4),
       inset 0 1px 1px rgba(255,255,255,0.6),
@@ -97,7 +101,7 @@ const XPSlider = styled(Slider)(() => ({
     },
     '&:hover, &.Mui-focusVisible': {
       boxShadow: `
-        0 0 0 6px rgba(63,159,224,0.16),
+        0 0 0 6px rgba(107,149,207,0.16),
         0 1px 2px rgba(0,0,0,0.4),
         inset 0 1px 1px rgba(255,255,255,0.6),
         inset 0 -1px 2px rgba(0,0,0,0.15)
@@ -243,7 +247,23 @@ export default function Music() {
   }
 
   return (
-    <Box sx={{ borderRadius: 1, padding: 2, color: 'black', border: "1px solid #ccc" }}>
+    <Box sx={{
+      borderRadius: 1,
+      padding: 2,
+      color: 'black',
+      border: '1px solid rgba(155, 163, 173, 0.7)',
+      background: `
+        repeating-linear-gradient(0deg, rgba(95, 105, 120, 0.045) 0px, rgba(95, 105, 120, 0.045) 1px, transparent 1px, transparent 5px),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(233, 237, 242, 0.8) 45%, rgba(208, 214, 222, 0.75) 100%)
+      `,
+      backdropFilter: 'blur(14px)',
+      WebkitBackdropFilter: 'blur(14px)',
+      boxShadow: `
+        0 2px 5px rgba(35, 55, 75, 0.2),
+        inset 0 1px 2px rgba(255, 255, 255, 0.95),
+        inset 0 -2px 3px rgba(100, 110, 125, 0.18)
+      `,
+    }}>
       {/* Song title + small visible YouTube player side by side */}
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, justifyContent: 'center' }}>
         <div ref={containerRef} style={{ width: 300, height: 200, flexShrink: 0 }} />
