@@ -13,7 +13,6 @@ function Contact() {
                 <Typography><Link underline="hover" href="https://www.linkedin.com/in/georgia-wu/" target="_blank" rel="noopener noreferrer">connect on linkedin</Link></Typography>
                 <Typography><Link underline="hover" href="https://github.com/r9ia" target="_blank" rel="noopener noreferrer">follow on github</Link></Typography>
                 <Typography><Link underline="hover" href="https://devpost.com/_rgia" target="_blank" rel="noopener noreferrer">follow on devpost</Link></Typography>
-                <Typography><Link underline="hover" href="tel:+16476368802" target="_blank" rel="noopener noreferrer"> phone</Link></Typography>
                 <Typography><Link underline="hover" href="https://drive.google.com/file/d/1sv6eFBpxh0uxdDoewzNvDiwsrP3ZX6wu/view?usp=sharing" target="_blank" rel="noopener noreferrer">read my resume</Link></Typography>
             </Box>
         </Box>
