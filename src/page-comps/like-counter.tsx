@@ -1,28 +1,29 @@
 import { useState, useEffect } from "react"
+import { onValue, set, increment } from "firebase/database"
 import { Box, ButtonBase, Typography } from "@mui/material"
 import { getGlassTabSx } from "../design/liquid-glass"
+import { likesRef } from "../firebase"
 
 export default function LikeCounter() {
-    const [count, setCount] = useState<number>(() => {
-        const saved = localStorage.getItem("gspace_like_count")
-        return saved !== null ? parseInt(saved, 10) : 12
-    })
+    // null = still loading from Firebase
+    const [count, setCount] = useState<number | null>(null)
     const [liked, setLiked] = useState<boolean>(() => {
-        return localStorage.getItem("gspace_user_liked") === "true"
+        return localStorage.getItem("user_liked") === "true"
     })
     const [animate, setAnimate] = useState(false)
 
+    // Live subscription: updates whenever anyone, anywhere, clicks
     useEffect(() => {
-        localStorage.setItem("gspace_like_count", count.toString())
-    }, [count])
+        return onValue(likesRef, (snap) => setCount(snap.val() ?? 0))
+    }, [])
 
     useEffect(() => {
-        localStorage.setItem("gspace_user_liked", liked.toString())
+        localStorage.setItem("user_liked", liked.toString())
     }, [liked])
 
     const handleLike = () => {
         setLiked(true)
-        setCount((prev) => prev + 1)
+        set(likesRef, increment(1)).catch(console.error)
         setAnimate(false)
         setTimeout(() => setAnimate(true), 10)
     }
@@ -55,7 +56,7 @@ export default function LikeCounter() {
                     ...getGlassTabSx('107,149,207'),
                     display: "inline-flex",
                     alignItems: "center",
-                    backgroundColor:  "#f0f2f5",
+                    backgroundColor: "#f0f2f5",
                     color: "#ffffff",
                     border: "1px solid #ccd0d5",
                     borderRadius: "6px",
@@ -83,8 +84,8 @@ export default function LikeCounter() {
                     }}
                 >
                     {/* 👇 Place your like icon (SVG, <img>, or MUI Icon) here */}
-                    <img src = "like.png" width={18} height={18}/>
-                    
+                    <img src="like.png" width={18} height={18} />
+
                     {/* 👆 Icon goes above */}
                 </Box>
 
@@ -144,7 +145,7 @@ export default function LikeCounter() {
                     },
                 }}
             >
-                {count}
+                {count ?? "–"}
             </Box>
         </Box>
     )
