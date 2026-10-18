@@ -3,13 +3,21 @@ export interface ExperienceInterface {
     company: string
     title: string
     date: string
-    stack: string[]
+    stack?: string[]
     description: string
     cover?: string //represneting what will be passed into the src tag
 }
 
 
 export const EXPERIENCES: ExperienceInterface[] = [
+    {
+        company: "Toronto AI Safety Initiative",
+        title: "Fellow",
+        date: "September 2026 - Present",
+        stack: ["Bluedot Impact"],
+        description: "- Weekly discussion group dedicated to the technical and moral side of AI safety.\n- Exploring guardrailing and harnessing methods for AI models",
+        cover: "taisi_logo.jpg",
+    },
     {
         company: "IEEE University of Toronto Branch",
         title: "Web Associate",

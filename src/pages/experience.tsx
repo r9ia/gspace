@@ -82,7 +82,7 @@ function Experience() {
 
                                 {/*stack tags*/}
                                 <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-                                    {experience.stack.map((tech) => (
+                                    {experience.stack?.map((tech) => (
                                         <Box key={tech}>
                                             <Typography sx={ORANGE_CHIP_SX}>
                                                 {tech}

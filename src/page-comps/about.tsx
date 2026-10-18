@@ -22,10 +22,11 @@ function About() {
             </Typography>
             <Typography sx={{ px: 1, whiteSpace: 'pre-wrap' }}>
                 Thanks for checking out my site! <br /><br />
-                I'm a <span style={{ color: "green", fontWeight: "bold" }}>2T9 Computer Engineering Student + PEY @ UofT</span>. I'm
-                looking to explore robotics, ML, AI safety, game development and systems design, as well as
-                expand my fullstack and web design skills.<br /><br />
-                My hobbies include playing volleyball and badminton, karaoke and using pinterest :)).
+                I'm a <span style={{ color: "green", fontWeight: "bold" }}>2T9 Computer Engineering Student + PEY @ UofT</span>. I'm primarily
+                interested in software engineering, with an interest to explore robotics, machine learning, AI safety and game development.
+                I also enjoy designing websites ^^.<br /><br />
+                My hobbies include karaoke, shopping and playing volleyball and badminton.
+                if any hiring managers for SWE Internships Summer 2027 want to play a match, let me know ASAP....
 
             </Typography>
 
@@ -33,11 +34,11 @@ function About() {
                 Who'd I like to meet:
             </Typography>
             <Typography sx={{ px: 1, whiteSpace: 'pre-wrap' }}>
-                everyone! feel free to contact me about anything through linkedin or email, and learn more
+                Everyone! Feel free to contact me about anything through linkedin or email, and learn more
                 about my{' '}
-                <Link underline="hover" onClick={() => navigate("/experience")}>experience</Link>
+                <Link variant="inherit" underline="hover" sx={{ p: 0, verticalAlign: 'baseline', fontWeight: "bold" }} onClick={() => navigate("/experience")}>experience</Link>
                 {' '}and{' '}
-                <Link underline="hover" onClick={() => navigate("/projects")}>projects</Link>. ^_^
+                <Link variant="inherit" underline="hover" sx={{ p: 0, verticalAlign: 'baseline', fontWeight: "bold" }} onClick={() => navigate("/projects")}>projects</Link>. ^^
             </Typography>
             <Box component="br" sx={{ display: { xs: "none", md: "block" } }} />
         </Box>

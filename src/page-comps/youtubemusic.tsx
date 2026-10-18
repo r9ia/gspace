@@ -126,7 +126,7 @@ const XPSlider = styled(Slider)(() => ({
   },
 }));
 
-export default function Music() {
+export default function Music({ visible = true }: { visible?: boolean }) {
   const playerRef = useRef<any>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const intervalRef = useRef<number | null>(null);
@@ -137,6 +137,18 @@ export default function Music() {
   const [duration, setDuration] = useState(0);
   const [volume, setVolume] = useState(50); // 0-100, matches YT API scale
   const prevVolumeRef = useRef(50);
+
+
+  useEffect(() => {
+    const pauseWhenHidden = () => {
+      if (!visible || document.hidden) {
+        playerRef.current?.pauseVideo?.();
+      }
+    };
+    pauseWhenHidden();
+    document.addEventListener('visibilitychange', pauseWhenHidden);
+    return () => document.removeEventListener('visibilitychange', pauseWhenHidden);
+  }, [visible, isReady]);
 
   useEffect(() => {
     // If the API script is already loaded (e.g. on hot reload), just init
@@ -169,6 +181,7 @@ export default function Music() {
       width: '300',
       height: '200',
       playerVars: {
+        origin: window.location.origin,
         controls: 0,
         disablekb: 1,
         modestbranding: 1,
@@ -265,8 +278,8 @@ export default function Music() {
       `,
     }}>
       {/* Song title + small visible YouTube player side by side */}
-      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, justifyContent: 'center', '& iframe': { maxWidth: '100%' } }}>
-        <div ref={containerRef} style={{ width: '100%', maxWidth: 310, height: 200 }} />
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, justifyContent: 'center', '& iframe': { minWidth: 200, maxWidth: '100%', minHeight: 200, flexShrink: 0 } }}>
+        <div ref={containerRef} style={{ width: '100%', minWidth: 200, maxWidth: 310, height: 200 }} />
       </Box>
 
       {/* progress bar + time, same line */}
