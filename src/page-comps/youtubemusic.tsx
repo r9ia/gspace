@@ -266,7 +266,7 @@ export default function Music() {
     }}>
       {/* Song title + small visible YouTube player side by side */}
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, justifyContent: 'center' }}>
-        <div ref={containerRef} style={{ width: 300, height: 200, flexShrink: 0 }} />
+        <div ref={containerRef} style={{ width: 310, height: 200, flexShrink: 0 }} />
       </Box>
 
       {/* progress bar + time, same line */}

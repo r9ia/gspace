@@ -5,7 +5,7 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft"
 import ChevronRightIcon from "@mui/icons-material/ChevronRight"
 import anime from "animejs"
 import { PROJECTS, type ProjectInterface } from "../Info/projectInfo"
-import { ORANGE_CHIP_SX } from "../design/chips"
+import { BLUE_GLASS_CHIP_SX } from "../design/chips"
 
 // Dimensions for the 3D cover cards 
 const CARD_WIDTH = 200
@@ -88,7 +88,7 @@ function ActiveProjectDetails({ project }: { project: ProjectInterface }) {
                 <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, mb: 1.5 }}>
                     {project.tags.split(",").map((tag) => (
                         <Box key={tag.trim()}>
-                            <Typography sx={ORANGE_CHIP_SX}>
+                            <Typography sx={BLUE_GLASS_CHIP_SX}>
                                 {tag.trim()}
                             </Typography>
                         </Box>
@@ -476,7 +476,7 @@ function ProjectOverview() {
                                     borderRadius: "14px",
                                     overflow: "hidden",
                                     position: "relative",
-                                    background: "linear-gradient(145deg, rgba(255,255,255,0.65), rgba(196,215,255,0.4))",
+                                    background: "linear-gradient(145deg, rgba(255,255,255,0.65), rgba(94, 237, 137, 0.4))",
                                     border: "1.5px solid rgba(255, 255, 255, 0.75)",
                                     boxShadow: "0 14px 30px rgba(13, 111, 199, 0.28), inset 0 1px 2px rgba(255,255,255,0.9)",
                                     display: "flex",
@@ -520,7 +520,7 @@ function ProjectOverview() {
                                         left: 0,
                                         right: 0,
                                         padding: "6px 10px",
-                                        background: "linear-gradient(180deg, rgba(0,0,0, 0) 0%, rgba(7, 88, 154, 0.7) 100%)",
+                                        background: "linear-gradient(180deg, rgba(0,0,0, 0) 0%, rgba(7, 115, 154, 0.7) 100%)",
                                         color: "white",
                                         zIndex: 4,
                                         pointerEvents: "none",

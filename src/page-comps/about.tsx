@@ -24,11 +24,9 @@ function About() {
             <Typography sx={{ px: 1, whiteSpace: 'pre-wrap' }}>
                 Thanks for checking out my site! <br /><br />
                 I'm a <span style={{ color: "green", fontWeight: "bold" }}>2T9 Computer Engineering Student + PEY @ UofT</span>. I'm
-                looking to learn more about robotics, ML, game development and systems design, as well as
+                looking to explore robotics, ML, AI safety, game development and systems design, as well as
                 expand my fullstack and web design skills.<br /><br />
-                Outside of tech, I enjoy volleyball, badminton,
-                mystery games, karaoke and clothes shopping. I've modeled this site off of late 2000's social media, 
-                which I appreciate a lot for its glossy and nostalgic design.
+                My hobbies include playing volleyball and badminton, karaoke and using pinterest :)).
 
             </Typography>
 
