@@ -1,5 +1,4 @@
 import { Typography, Box, Link } from "@mui/material"
-import { getGlassTabSx } from "../design/liquid-glass"
 import { useNavigate } from "react-router-dom"
 
 function About() {
@@ -9,7 +8,7 @@ function About() {
         <Box sx={{}}>
             <Typography sx={{
                 borderRadius: 0,
-                fontSize: 20,
+                fontSize: { xs: 22, md: 20 },
                 color: "#8f2323",
                 bgcolor: "#e39356",
                 fontWeight: "bold",
@@ -34,13 +33,13 @@ function About() {
                 Who'd I like to meet:
             </Typography>
             <Typography sx={{ px: 1, whiteSpace: 'pre-wrap' }}>
-                everyone! feel free to contact me anytime through linkedin or email, and learn more
+                everyone! feel free to contact me about anything through linkedin or email, and learn more
                 about my{' '}
                 <Link underline="hover" onClick={() => navigate("/experience")}>experience</Link>
                 {' '}and{' '}
                 <Link underline="hover" onClick={() => navigate("/projects")}>projects</Link>. ^_^
             </Typography>
-            <br />
+            <Box component="br" sx={{ display: { xs: "none", md: "block" } }} />
         </Box>
     )
 }

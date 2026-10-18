@@ -1,8 +1,9 @@
-import { Box, ImageList, ImageListItem, Typography } from "@mui/material"
+import { Box, ImageList, ImageListItem, Typography, useMediaQuery } from "@mui/material"
 import { GALLERYPHOTOS } from "../Info/galleryPhotos"
 
 
 function Gallery() {
+    const mobile = useMediaQuery("(max-width:599px)")
 
     return (
         <Box>
@@ -14,7 +15,7 @@ function Gallery() {
                     bgcolor: "#cfdaf0"
                 }}>
                     <Typography sx={{
-                        fontSize: 20,
+                        fontSize: { xs: 22, md: 20 },
                         color: "#000000",
                         fontWeight: 550
                     }}>
@@ -31,13 +32,13 @@ function Gallery() {
                     bgcolor: "#eceef2",
                     borderTop: "1.5px solid #f4f5f7",
                 }}>
-                    <Typography sx={{ fontSize: 16 }}>
+                    <Typography sx={{ fontSize: { xs: 18, md: 16 } }}>
                         Displaying: {GALLERYPHOTOS.length}
                     </Typography>
                 </Box>
             </Box>
 
-            <ImageList variant="masonry" cols={3} gap={8}>
+            <ImageList variant="masonry" cols={mobile ? 2 : 3} gap={8}>
                 {GALLERYPHOTOS.map((item) => (
                     <ImageListItem key={item.img} sx={{
                         overflow: "hidden",

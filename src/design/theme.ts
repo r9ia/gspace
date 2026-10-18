@@ -9,6 +9,12 @@ const theme = createTheme({
     },
     typography: {
         fontFamily: 'Verdana, Geneva, sans-serif',
+        body1: {
+            '@media (max-width:899.95px)': { fontSize: '1rem', lineHeight: 1.65 },
+        },
+        body2: {
+            '@media (max-width:899.95px)': { fontSize: '0.9rem', lineHeight: 1.6 },
+        },
         button: {
             textTransform: 'none',
         },

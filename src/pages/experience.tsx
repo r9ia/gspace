@@ -13,7 +13,7 @@ function Experience() {
                     bgcolor: "#cfdaf0"
                 }}>
                     <Typography sx={{
-                        fontSize: 20,
+                        fontSize: { xs: 22, md: 20 },
                         color: "#000000",
                         fontWeight: 550
                     }}>
@@ -30,7 +30,7 @@ function Experience() {
                     bgcolor: "#eceef2",
                     borderTop: "1.5px solid #f4f5f7",
                 }}>
-                    <Typography sx={{ fontSize: 16 }}>
+                    <Typography sx={{ fontSize: { xs: 18, md: 16 } }}>
                         Displaying: {EXPERIENCES.length} cards
                     </Typography>
                 </Box>
@@ -53,7 +53,7 @@ function Experience() {
                         <Typography sx={{
                             color: "#6b6868",
                             fontWeight: "light",
-                            fontSize: 15
+                            fontSize: { xs: 17, md: 15 }
                         }} >
                             {experience.date}
 
@@ -62,15 +62,15 @@ function Experience() {
                         <Divider />
 
                         {/* actual content*/}
-                        <Box sx={{ display: "flex", pt: 1 }}>
+                        <Box sx={{ display: "flex", flexWrap: { xs: "wrap", md: "nowrap" }, pt: 1 }}>
                             {/*post icon*/}
                             <img src={"experiences.png"} width={40} height={40} />
 
 
                             {/*text*/}
-                            <Box sx={{ pl: 1 }}>
+                            <Box sx={{ pl: 1, flex: 1, minWidth: 0 }}>
                                 <Typography sx={{
-                                    fontSize: 20, color: "#000000",
+                                    fontSize: { xs: 22, md: 20 }, color: "#000000",
                                     fontWeight: "bold",
                                 }}>
                                     {experience.title}
@@ -98,7 +98,7 @@ function Experience() {
                             </Box>
 
                             {/*cover image*/}
-                            <Box sx={{ ml: "auto" }}>
+                            <Box sx={{ ml: "auto", mt: { xs: 1, md: 0 }, pl: 1 }}>
                                 <img src={experience.cover} width={130} />
                             </Box>
 

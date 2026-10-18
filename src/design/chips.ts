@@ -12,7 +12,7 @@ export const ORANGE_CHIP_SX: SxProps<Theme> = {
     color: "#000000",
     borderRadius: 1,
     px: 1,
-    fontSize: 12,
+    fontSize: { xs: 14, md: 12 },
 }
 
 export default ORANGE_CHIP_SX
@@ -26,6 +26,6 @@ export const BLUE_GLASS_CHIP_SX: SxProps<Theme> = {
         "0 2px 8px rgba(107,149,207,0.12), inset 0 1px 1px rgba(255,255,255,0.75), inset 0 -1px 3px rgba(107,149,207,0.1)",
     borderRadius: 1,
     px: 1,
-    fontSize: 12,
+    fontSize: { xs: 14, md: 12 },
 }
 

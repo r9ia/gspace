@@ -21,10 +21,11 @@ function DefaultLayout() {
     return (
         <Container disableGutters maxWidth="lg">
             <Header />
-            <Box sx={{ display: "flex", gap: 3, alignItems: "flex-start", padding: "20px", textAlign: "left" }}>
-                <Sidebar />
+            <Box sx={{ display: { xs: "grid", md: "flex" }, gridTemplateColumns: "minmax(0, 1fr)", gap: 3, alignItems: "flex-start", padding: { xs: "16px 12px", md: "20px" }, textAlign: "left" }}>
+                <Sidebar isHome={location.pathname === "/"} />
                 <Box
-                    sx={{ flex: 1, minWidth: 0, opacity: visible ? 1 : 0, transition: "opacity 200ms ease-in-out" }}
+                    component="main"
+                    sx={{ order: { xs: 2, md: 0 }, overflowWrap: "anywhere", flex: 1, minWidth: 0, opacity: visible ? 1 : 0, transition: "opacity 200ms ease-in-out" }}
                     onTransitionEnd={() => {
                         if (!visible) {
                             setDisplayLocation(location)

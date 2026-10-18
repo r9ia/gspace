@@ -63,7 +63,7 @@ function ActiveProjectDetails({ project }: { project: ProjectInterface }) {
             <Typography sx={{
                 color: "#6b6868",
                 fontWeight: "light",
-                fontSize: 15
+                fontSize: { xs: 17, md: 15 }
             }} >
                 {project.date}
             </Typography>
@@ -75,7 +75,7 @@ function ActiveProjectDetails({ project }: { project: ProjectInterface }) {
                 sx={{
                     margin: "0 0 6px",
                     fontWeight: 800,
-                    fontSize: { xs: 20, sm: 22 },
+                    fontSize: { xs: 22, sm: 24, md: 22 },
                     color: "#08060d",
                     pt: 1
                 }}
@@ -100,7 +100,7 @@ function ActiveProjectDetails({ project }: { project: ProjectInterface }) {
                 <Typography
                     sx={{
                         margin: "0 0 14px",
-                        fontSize: 14,
+                        fontSize: { xs: 16, md: 14 },
                         lineHeight: 1.5,
                         color: "#222",
                         display: "-webkit-box",
@@ -113,14 +113,14 @@ function ActiveProjectDetails({ project }: { project: ProjectInterface }) {
                 </Typography>
             )}
 
-            <Stack direction="row" spacing={2} sx={{ mt: "auto", pt: 1, alignItems: "center" }}>
+            <Stack direction="row" spacing={2} sx={{ mt: "auto", pt: 1, alignItems: "center", flexWrap: "wrap", rowGap: 1 }}>
                 <RouterLink
                     to={`/projects/${encodeURIComponent(project.title)}`}
                     style={{ textDecoration: "none" }}
                 >
                     <Typography
                         sx={{
-                            fontSize: 14,
+                            fontSize: { xs: 16, md: 14 },
                             fontWeight: 700,
                             color: "#39629b",
                             display: "inline-flex",
@@ -145,7 +145,7 @@ function ActiveProjectDetails({ project }: { project: ProjectInterface }) {
                         target="_blank"
                         rel="noreferrer"
                         sx={{
-                            fontSize: 13,
+                            fontSize: { xs: 15, md: 13 },
                             color: "#1a4f8f",
                             textDecoration: "none",
                             padding: "3px 10px",
@@ -359,7 +359,7 @@ function ProjectOverview() {
                     bgcolor: "#cfdaf0"
                 }}>
                     <Typography sx={{
-                        fontSize: 20,
+                        fontSize: { xs: 22, md: 20 },
                         color: "#000000",
                         fontWeight: 550
                     }}>
@@ -376,7 +376,7 @@ function ProjectOverview() {
                     bgcolor: "#eceef2",
                     borderTop: "1.5px solid #f4f5f7",
                 }}>
-                    <Typography sx={{ fontSize: 16 }}>
+                    <Typography sx={{ fontSize: { xs: 18, md: 16 } }}>
                         Drag, Scroll or Use Arrows.
                     </Typography>
                 </Box>
@@ -402,11 +402,14 @@ function ProjectOverview() {
                     onTouchStart={(e) => handlePointerDown(e.touches[0].clientX)}
                     onTouchMove={(e) => handlePointerMove(e.touches[0].clientX)}
                     onTouchEnd={handlePointerUp}
+                    onTouchCancel={handlePointerUp}
                     sx={{
-                        flex: 1,
+                        flex: { xs: "0 0 auto", md: 1 },
                         minWidth: 0,
+                        minHeight: STAGE_HEIGHT,
                         position: "relative",
                         height: STAGE_HEIGHT,
+                        touchAction: "pan-y",
                         perspective: "1000px",
                         perspectiveOrigin: "50% 45%",
                         overflow: "hidden",
@@ -528,7 +531,7 @@ function ProjectOverview() {
                                 >
                                     <Typography
                                         sx={{
-                                            fontSize: 13,
+                                            fontSize: { xs: 15, md: 13 },
                                             fontWeight: "bold",
                                             textShadow: "0 1px 3px rgba(0,0,0,0.7)",
                                             whiteSpace: "nowrap",
@@ -562,7 +565,9 @@ function ProjectOverview() {
                 <Box
                     sx={{
                         width: { xs: "100%", md: 170 },
-                        height: STAGE_HEIGHT,
+                        height: { xs: "auto", md: STAGE_HEIGHT },
+                        maxHeight: { xs: 220, md: STAGE_HEIGHT },
+                        boxSizing: "border-box",
                         flexShrink: 0,
                         display: "flex",
                         flexDirection: "column",
@@ -586,7 +591,7 @@ function ProjectOverview() {
                         }}
                     >
 
-                        <Typography sx={{ fontSize: 12, fontWeight: 600 }}>
+                        <Typography sx={{ fontSize: { xs: 14, md: 12 }, fontWeight: 600 }}>
                             {PROJECTS.length} Projects
                         </Typography>
                     </Box>
@@ -594,7 +599,8 @@ function ProjectOverview() {
                     {/* Scrollable list of project titles */}
                     <Box
                         sx={{
-                            flex: 1,
+                            flex: { xs: "0 1 auto", md: 1 },
+                            minHeight: 0,
                             overflowY: "auto",
                             p: 0,
                             display: "flex",
@@ -642,7 +648,7 @@ function ProjectOverview() {
                                 >
                                     <Typography
                                         sx={{
-                                            fontSize: 13,
+                                            fontSize: { xs: 15, md: 13 },
                                             fontWeight: isActive ? 700 : 500,
                                             whiteSpace: "nowrap",
                                             overflow: "hidden",
@@ -654,7 +660,7 @@ function ProjectOverview() {
                                     {project.date && (
                                         <Typography
                                             sx={{
-                                                fontSize: 10,
+                                                fontSize: { xs: 12, md: 10 },
                                                 color: isActive ? "rgba(255,255,255,0.85)" : "#5a738e",
                                                 whiteSpace: "nowrap",
                                                 overflow: "hidden",
