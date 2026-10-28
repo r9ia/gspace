@@ -20,11 +20,11 @@ function Contact() {
                     whiteSpace: "nowrap",
                 },
             }}>
-                <Typography sx={{fontSize: { xs: 19, md: 15 }}}><Link underline="hover" href="mailto:georgiamwu@gmail.com">Send an Email</Link></Typography>
-                <Typography sx={{fontSize: { xs: 19, md: 15 }}}><Link underline="hover" href="https://www.linkedin.com/in/georgia-wu/" target="_blank" rel="noopener noreferrer">Connect on Linkedin</Link></Typography>
-                <Typography sx={{fontSize: { xs: 19, md: 15 }}}><Link underline="hover" href="https://github.com/r9ia" target="_blank" rel="noopener noreferrer">Follow on Github</Link></Typography>
-                <Typography sx={{fontSize: { xs: 19, md: 15 }}}><Link underline="hover" href="https://devpost.com/_rgia" target="_blank" rel="noopener noreferrer">Follow on Devpost</Link></Typography>
-                <Typography sx={{fontSize: { xs: 19, md: 15 }}}><Link underline="hover" href="https://drive.google.com/file/d/1sv6eFBpxh0uxdDoewzNvDiwsrP3ZX6wu/view?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</Link></Typography>
+                <Typography sx={{ fontSize: { xs: 19, md: 15 } }}><Link underline="hover" href="mailto:georgiamwu@gmail.com">Send an Email</Link></Typography>
+                <Typography sx={{ fontSize: { xs: 19, md: 15 } }}><Link underline="hover" href="https://www.linkedin.com/in/georgia-wu/" target="_blank" rel="noopener noreferrer">Connect on Linkedin</Link></Typography>
+                <Typography sx={{ fontSize: { xs: 19, md: 15 } }}><Link underline="hover" href="https://github.com/r9ia" target="_blank" rel="noopener noreferrer">Follow on Github</Link></Typography>
+                <Typography sx={{ fontSize: { xs: 19, md: 15 } }}><Link underline="hover" href="https://devpost.com/_rgia" target="_blank" rel="noopener noreferrer">Follow on Devpost</Link></Typography>
+                <Typography sx={{ fontSize: { xs: 19, md: 15 } }}><Link underline="hover" href="https://drive.google.com/file/d/1D9am1kg06f1j8OybOpdhR5Ho5uxDF7qp/view?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</Link></Typography>
             </Box>
         </Box>
     )

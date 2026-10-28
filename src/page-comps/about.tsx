@@ -26,7 +26,7 @@ function About() {
                 interested in software engineering, with an interest to explore robotics, machine learning, AI safety and game development.
                 I also enjoy designing websites ^-^.<br /><br />
                 My hobbies include karaoke, shopping and playing volleyball and badminton.
-                if any hiring managers for SWE Internships Summer 2027 want to play a match, let me know ASAP....
+                If any hiring managers for SWE Internships Summer 2027 want to play a match, let me know ASAP....
 
             </Typography>
 
