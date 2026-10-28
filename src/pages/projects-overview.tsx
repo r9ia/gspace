@@ -113,7 +113,7 @@ function ActiveProjectDetails({ project }: { project: ProjectInterface }) {
                 </Typography>
             )}
 
-            <Stack direction="row" spacing={2} sx={{ mt: "auto", pt: 1, alignItems: "center", flexWrap: "wrap", rowGap: 1 }}>
+            <Stack direction={{ xs: "column", md: "row" }} spacing={2} sx={{ mt: "auto", pt: 1, alignItems: { xs: "flex-start", md: "center" }, flexWrap: "wrap", rowGap: 1 }}>
                 <RouterLink
                     to={`/projects/${encodeURIComponent(project.title)}`}
                     style={{ textDecoration: "none" }}
@@ -137,6 +137,7 @@ function ActiveProjectDetails({ project }: { project: ProjectInterface }) {
                     </Typography>
                 </RouterLink>
 
+                <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
                 {project.links?.map((link) => (
                     <Box
                         key={link.label}
@@ -161,6 +162,7 @@ function ActiveProjectDetails({ project }: { project: ProjectInterface }) {
                         {link.label}
                     </Box>
                 ))}
+                </Box>
             </Stack>
         </Box>
     )

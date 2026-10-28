@@ -15,7 +15,7 @@ export const EXPERIENCES: ExperienceInterface[] = [
         title: "Fellow",
         date: "September 2026 - Present",
         stack: ["Bluedot Impact"],
-        description: "- Weekly discussion group dedicated to the technical and moral side of AI safety.\n- Exploring guardrailing and harnessing methods for AI models",
+        description: "- Weekly discussion group dedicated to the technical and moral side of AI safety\n- Exploring guardrailing and harnessing methods for AI models",
         cover: "taisi_logo.jpg",
     },
     {

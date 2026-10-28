@@ -19,7 +19,7 @@ function DefaultLayout() {
     }, [location.pathname, displayLocation.pathname])
 
     return (
-        <Container disableGutters maxWidth="lg">
+        <Container disableGutters maxWidth="lg" sx={{ pb: { xs: "calc(80px + env(safe-area-inset-bottom, 0px))", md: 0 } }}>
             <Header />
             <Box sx={{ display: { xs: "grid", md: "flex" }, gridTemplateColumns: "minmax(0, 1fr)", gap: 3, alignItems: "flex-start", padding: { xs: "16px 12px", md: "20px" }, textAlign: "left" }}>
                 <Sidebar isHome={location.pathname === "/"} />

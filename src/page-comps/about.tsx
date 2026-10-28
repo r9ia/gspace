@@ -24,7 +24,7 @@ function About() {
                 Thanks for checking out my site! <br /><br />
                 I'm a <span style={{ color: "green", fontWeight: "bold" }}>2T9 Computer Engineering Student + PEY @ UofT</span>. I'm primarily
                 interested in software engineering, with an interest to explore robotics, machine learning, AI safety and game development.
-                I also enjoy designing websites ^^.<br /><br />
+                I also enjoy designing websites ^-^.<br /><br />
                 My hobbies include karaoke, shopping and playing volleyball and badminton.
                 if any hiring managers for SWE Internships Summer 2027 want to play a match, let me know ASAP....
 
@@ -38,7 +38,7 @@ function About() {
                 about my{' '}
                 <Link variant="inherit" underline="hover" sx={{ p: 0, verticalAlign: 'baseline', fontWeight: "bold" }} onClick={() => navigate("/experience")}>experience</Link>
                 {' '}and{' '}
-                <Link variant="inherit" underline="hover" sx={{ p: 0, verticalAlign: 'baseline', fontWeight: "bold" }} onClick={() => navigate("/projects")}>projects</Link>. ^^
+                <Link variant="inherit" underline="hover" sx={{ p: 0, verticalAlign: 'baseline', fontWeight: "bold" }} onClick={() => navigate("/projects")}>projects</Link>. ^-^
             </Typography>
             <Box component="br" sx={{ display: { xs: "none", md: "block" } }} />
         </Box>

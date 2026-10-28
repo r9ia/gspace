@@ -16,6 +16,8 @@ function Contact() {
                 alignItems: "flex-start",
                 "& > .MuiTypography-root": {
                     minWidth: 0,
+                    fontSize: { xs: "clamp(12px, 3.5vw, 15px)", md: 15 },
+                    whiteSpace: "nowrap",
                 },
             }}>
                 <Typography sx={{fontSize: { xs: 19, md: 15 }}}><Link underline="hover" href="mailto:georgiamwu@gmail.com">Send an Email</Link></Typography>

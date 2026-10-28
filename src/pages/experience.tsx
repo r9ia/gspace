@@ -62,7 +62,7 @@ function Experience() {
                         <Divider />
 
                         {/* actual content*/}
-                        <Box sx={{ display: "flex", flexWrap: { xs: "wrap", md: "nowrap" }, pt: 1 }}>
+                        <Box sx={{ display: "flex", flexWrap: "nowrap", pt: 1 }}>
                             {/*post icon*/}
                             <img src={"experiences.png"} width={40} height={40} />
 
@@ -98,8 +98,8 @@ function Experience() {
                             </Box>
 
                             {/*cover image*/}
-                            <Box sx={{ ml: "auto", mt: { xs: 1, md: 0 }, pl: 1 }}>
-                                <img src={experience.cover} width={130} />
+                            <Box sx={{ ml: "auto", pl: 1, flexShrink: 0 }}>
+                                <Box component="img" src={experience.cover} alt={experience.company} sx={{ width: { xs: 56, sm: 72, md: 130 }, height: "auto" }} />
                             </Box>
 
                         </Box>

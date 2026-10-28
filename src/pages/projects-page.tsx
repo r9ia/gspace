@@ -1,7 +1,7 @@
 import { useParams, Navigate, Link as RouterLink } from "react-router-dom"
 import { Box, Typography } from "@mui/material"
 import { getProjectByTitle } from "../Info/projectInfo.tsx"
-import { ORANGE_CHIP_SX } from "../design/chips"
+import { BLUE_GLASS_CHIP_SX } from "../design/chips"
 
 
 // single view of a project
@@ -67,7 +67,7 @@ function ProjectPage() {
                 <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, mb: 1.5 }}>
                     {currentProject.tags.split(",").map((tag) => (
                         <Box key={tag.trim()}>
-                            <Typography sx={ORANGE_CHIP_SX}>
+                            <Typography sx={BLUE_GLASS_CHIP_SX}>
                                 {tag.trim()}
                             </Typography>
                         </Box>

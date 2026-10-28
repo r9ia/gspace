@@ -10,7 +10,7 @@ function PictureTitle() {
                 <img src="picture.jpg" alt="Georgia Wu" width={190} style={{ display: "block", width: "100%", height: "auto" }} />
             </Box>
             <Box sx={{ minWidth: 0, paddingTop: { xs: "1lh", md: 0 }, "@media (max-width:899.95px)": { "& .MuiTypography-root": { fontSize: 16 } }, margin: { xs: 0, md: 1 }, textAlign: "left", fontSize: "xs" }}>
-                <Typography>"^_^"</Typography>
+                <Typography>"^-^"</Typography>
                 <br></br>
                 <Typography>19 years old</Typography>
                 <Typography>Toronto, ON, CA</Typography>
